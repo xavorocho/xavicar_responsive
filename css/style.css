@@ -1,714 +1,1102 @@
 /* ==========================================
    ESTILOS GENERALES - XAVICAR
+   Archivo de estilos principal para toda la página
    ========================================== */
 
+/* ==========================================
+   VARIABLES CSS (Reutilización de valores)
+   Define los colores y tamaños que se usan en toda la página
+   ========================================== */
 :root {
-    --color-primary: #d32f2f;
-    --color-dark: #1a1a1a;
-    --color-light: #ffffff;
-    --color-bg: #f5f5f5;
-    --color-text: #333333;
-    --color-text-muted: #666666;
-    --color-border: #dddddd;
-    --color-success: #27ae60;
+    /* COLORES - Paleta de colores de la marca */
+    --color-primary: #d32f2f;      /* Rojo principal - botones, acentos */
+    --color-dark: #1a1a1a;         /* Negro oscuro - header, footer */
+    --color-light: #ffffff;        /* Blanco - texto principal */
+    --color-bg: #f5f5f5;           /* Gris claro - fondos alternos */
+    --color-text: #333333;         /* Gris oscuro - texto general */
+    --color-text-muted: #666666;   /* Gris medio - texto secundario */
+    --color-border: #dddddd;       /* Gris muy claro - bordes */
+    --color-success: #27ae60;      /* Verde - badges de éxito */
     
-    --font-main: 'Arial', sans-serif;
-    --font-size-base: 16px;
-    --font-size-large: 20px;
-    --font-size-title: 28px;
-    --font-size-hero: 48px;
+    /* TIPOGRAFÍA - Estilos de texto */
+    --font-main: 'Arial', sans-serif;  /* Fuente principal */
+    --font-size-base: 16px;         /* Tamaño base para párrafos */
+    --font-size-large: 20px;        /* Tamaño grande */
+    --font-size-title: 28px;        /* Tamaño para títulos de sección */
+    --font-size-hero: 48px;         /* Tamaño grande para hero */
     
-    --border-radius: 8px;
-    --transition: all 0.3s ease;
-    --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* ESTILOS - Valores reutilizables */
+    --border-radius: 8px;           /* Radio de esquinas redondeadas */
+    --transition: all 0.3s ease;    /* Transición suave para efectos */
+    --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  /* Sombra suave */
 }
 
-/* Reset y base */
+/* ==========================================
+   RESET Y ESTILOS BASE
+   Elimina estilos por defecto y establece la base
+   ========================================== */
+
+/* Reset universal - Elimina márgenes y paddings por defecto */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box;  /* Incluye padding en el ancho total */
 }
 
+/* HTML - Comportamiento del scroll suave */
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth;  /* Scroll smooth para los enlaces #anchor */
 }
 
+/* BODY - Estilos del cuerpo de la página */
 body {
-    font-family: var(--font-main);
-    font-size: var(--font-size-base);
-    line-height: 1.6;
-    color: var(--color-text);
-    background-color: var(--color-light);
+    font-family: var(--font-main);      /* Usa la fuente definida */
+    font-size: var(--font-size-base);   /* Tamaño de texto base */
+    line-height: 1.6;                   /* Altura de línea para legibilidad */
+    color: var(--color-text);           /* Color de texto por defecto */
+    background-color: var(--color-light);  /* Fondo blanco */
 }
 
-/* Contenedor principal */
+/* CONTENEDOR - Clase reutilizable para limitar ancho */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    max-width: 1200px;      /* Ancho máximo de 1200px */
+    margin: 0 auto;         /* Centrado horizontal */
+    padding: 0 20px;        /* Espaciado lateral */
 }
 
 /* ==========================================
    NAVBAR / HEADER
+   Barra de navegación superior
    ========================================== */
 
+/* HEADER - Estilos del encabezado */
 .navbar {
-    background-color: var(--color-dark);
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: var(--box-shadow);
+    background-color: var(--color-dark);  /* Fondo negro oscuro */
+    padding: 15px 0;                      /* Espaciado vertical */
+    position: sticky;                     /* Se queda en la parte superior al scrollear */
+    top: 0;                               /* Posición en el tope */
+    z-index: 100;                         /* Encima de otros elementos */
+    box-shadow: var(--box-shadow);        /* Sombra suave */
 }
 
+/* NAVBAR CONTENT - Contenedor del contenido del navbar */
 .navbar-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex;                    /* Flexbox para alinear elementos horizontalmente */
+    justify-content: space-between;   /* Logo a la izquierda, menú a la derecha */
+    align-items: center;              /* Alineación vertical centrada */
 }
 
+/* LOGO - Sección del logo y nombre */
 .logo {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
+    display: flex;              /* Flexbox para alinear logo y tagline */
+    align-items: baseline;      /* Alineación en la línea de base */
+    gap: 8px;                   /* Espacio entre logo y tagline */
 }
 
+/* LOGO H1 - Título del logo */
 .logo h1 {
-    color: var(--color-light);
-    font-size: 28px;
-    font-weight: bold;
-    letter-spacing: 2px;
+    color: var(--color-light);      /* Texto blanco */
+    font-size: 28px;                /* Tamaño grande */
+    font-weight: bold;              /* Texto grueso */
+    letter-spacing: 2px;            /* Espacio entre letras */
 }
 
+/* LOGO TAGLINE - Subtítulo del logo */
 .logo .tagline {
-    color: var(--color-primary);
-    font-size: 11px;
-    font-weight: bold;
-    text-transform: uppercase;
+    color: var(--color-primary);    /* Color rojo principal */
+    font-size: 11px;                /* Tamaño pequeño */
+    font-weight: bold;              /* Texto grueso */
+    text-transform: uppercase;      /* Todas mayúsculas */
 }
 
-/* Menú de navegación */
+/* NAV MENU - Menú de navegación */
 .nav-menu {
-    display: flex;
-    gap: 30px;
+    display: flex;          /* Flexbox para alinear enlaces horizontalmente */
+    gap: 30px;              /* Espacio entre enlaces */
 }
 
+/* NAV LINK - Enlace individual del menú */
 .nav-link {
-    color: var(--color-light);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    transition: var(--transition);
-    position: relative;
+    color: var(--color-light);      /* Texto blanco */
+    text-decoration: none;          /* Sin subrayado */
+    font-size: 14px;                /* Tamaño pequeño */
+    font-weight: 500;               /* Semi-bold */
+    transition: var(--transition);  /* Transición suave en hover */
+    position: relative;             /* Para el pseudo-elemento ::after */
 }
 
+/* NAV LINK HOVER EFFECT - Línea que aparece al pasar el mouse */
 .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--color-primary);
-    transition: var(--transition);
+    content: '';                    /* Crea pseudo-elemento vacío */
+    position: absolute;             /* Posicionado relativo al nav-link */
+    bottom: -5px;                   /* 5px debajo del texto */
+    left: 0;                        /* Alineado a la izquierda */
+    width: 0;                       /* Ancho inicial 0 */
+    height: 2px;                    /* Altura de 2px */
+    background-color: var(--color-primary);  /* Color rojo */
+    transition: var(--transition);  /* Transición suave */
 }
 
+/* NAV LINK HOVER - Cuando pasa el mouse */
 .nav-link:hover::after {
-    width: 100%;
+    width: 100%;  /* La línea se expande al 100% */
 }
 
 .nav-link:hover {
-    color: var(--color-primary);
+    color: var(--color-primary);  /* Texto cambia a rojo */
 }
 
 /* ==========================================
    HERO SECTION
+   Sección principal con promoción
    ========================================== */
 
+/* HERO - Contenedor principal del hero */
 .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 40px;
-    padding: 80px 20px;
-    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-    min-height: 500px;
+    display: grid;                          /* Usa CSS Grid */
+    grid-template-columns: 1fr 1fr;         /* Dos columnas iguales */
+    align-items: center;                    /* Alineación vertical centrada */
+    gap: 40px;                              /* Espacio entre columnas */
+    padding: 80px 20px;                     /* Espaciado vertical y horizontal */
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);  /* Gradiente oscuro */
+    min-height: 500px;                      /* Altura mínima */
 }
 
+/* HERO CONTENT - Contenido del lado derecho */
 .hero-content {
-    color: var(--color-light);
+    color: var(--color-light);  /* Texto blanco */
 }
 
+/* PROMO BADGE - Etiqueta de promoción */
+.promo-badge {
+    display: inline-block;                          /* Inline pero ocupa su espacio */
+    background-color: #ff9800;                      /* Color naranja */
+    color: var(--color-light);                      /* Texto blanco */
+    padding: 8px 15px;                              /* Espaciado interno */
+    border-radius: 20px;                            /* Esquinas redondeadas */
+    font-size: 12px;                                /* Tamaño pequeño */
+    font-weight: bold;                              /* Texto grueso */
+    text-transform: uppercase;                      /* Mayúsculas */
+    letter-spacing: 1px;                            /* Espacio entre letras */
+    margin-bottom: 20px;                            /* Espacio debajo */
+    animation: pulse 2s infinite;                   /* Animación pulsante */
+}
+
+/* ANIMACIÓN PULSE - Hace que el badge pulse */
+@keyframes pulse {
+    0%, 100% { 
+        transform: scale(1);                        /* Tamaño normal */
+        box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7);  /* Sin sombra */
+    }
+    50% { 
+        transform: scale(1.05);                     /* Crece un 5% */
+        box-shadow: 0 0 0 10px rgba(255, 152, 0, 0);  /* Sombra expandida */
+    }
+}
+
+/* HERO TITLE - Título principal */
 .hero-title {
-    font-size: var(--font-size-hero);
-    font-weight: bold;
-    margin-bottom: 20px;
-    line-height: 1.2;
+    font-size: var(--font-size-hero);   /* Tamaño grande */
+    font-weight: bold;                  /* Texto grueso */
+    margin-bottom: 20px;                /* Espacio debajo */
+    line-height: 1.2;                   /* Altura de línea compacta */
 }
 
+/* HERO SUBTITLE - Subtítulo con la oferta */
 .hero-subtitle {
-    font-size: var(--font-size-large);
-    color: #e8e8e8;
-    margin-bottom: 30px;
-    line-height: 1.5;
+    font-size: var(--font-size-large);  /* Tamaño grande */
+    color: #ffc107;                     /* Color amarillo */
+    margin-bottom: 30px;                /* Espacio debajo */
+    line-height: 1.5;                   /* Altura de línea normal */
 }
 
+/* HIGHLIGHT - Palabra destacada (GRATIS) */
+.highlight {
+    color: #ff5722;                     /* Color rojo-naranja */
+    font-size: 1.2em;                   /* 20% más grande */
+    text-transform: uppercase;          /* Mayúsculas */
+    font-weight: 900;                   /* Muy grueso */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);  /* Sombra */
+}
+
+/* HERO DESCRIPTION - Descripción que genera urgencia */
+.hero-description {
+    font-size: 16px;                    /* Tamaño base */
+    color: #e8e8e8;                     /* Gris claro */
+    margin-bottom: 30px;                /* Espacio debajo */
+    line-height: 1.6;                   /* Altura de línea normal */
+}
+
+/* HERO IMAGE - Contenedor de imagen */
 .hero-image {
-    position: relative;
-    height: 100%;
-    min-height: 350px;
+    position: relative;                 /* Posicionamiento relativo */
+    height: 100%;                       /* Alto del grid */
+    min-height: 350px;                  /* Alto mínimo */
 }
 
+/* BANNER IMAGE - Imagen del banner */
 .banner-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: var(--border-radius);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 100%;                        /* Ancho completo */
+    height: 100%;                       /* Alto completo */
+    object-fit: cover;                  /* Recorta la imagen para llenar */
+    border-radius: var(--border-radius);  /* Esquinas redondeadas */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);  /* Sombra */
+}
+
+/* HERO BUTTONS - Contenedor de botones */
+.hero-buttons {
+    display: flex;                      /* Flexbox para botones en fila */
+    gap: 15px;                          /* Espacio entre botones */
+    flex-wrap: wrap;                    /* Los botones bajan de línea si no caben */
+    align-items: center;                /* Alineación vertical */
+    margin-top: 30px;                   /* Espacio arriba */
 }
 
 /* ==========================================
-   BOTONES
+   BOTONES - Estilos generales de botones
    ========================================== */
 
+/* BTN - Clase base de botones */
 .btn {
-    display: inline-block;
-    padding: 12px 30px;
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    font-weight: bold;
-    text-align: center;
-    border: none;
-    cursor: pointer;
-    transition: var(--transition);
-    font-size: 14px;
+    display: inline-block;              /* Se comporta como bloque pero inline */
+    padding: 12px 30px;                 /* Espaciado interno */
+    border-radius: var(--border-radius);  /* Esquinas redondeadas */
+    text-decoration: none;              /* Sin subrayado */
+    font-weight: bold;                  /* Texto grueso */
+    text-align: center;                 /* Texto centrado */
+    border: none;                       /* Sin borde */
+    cursor: pointer;                    /* Cursor puntero */
+    transition: var(--transition);      /* Transición suave */
+    font-size: 14px;                    /* Tamaño pequeño */
 }
 
+/* BTN PRIMARY - Botón principal (rojo) */
 .btn-primary {
-    background-color: var(--color-primary);
-    color: var(--color-light);
+    background-color: var(--color-primary);  /* Fondo rojo */
+    color: var(--color-light);               /* Texto blanco */
 }
 
+/* BTN PRIMARY HOVER - Efecto al pasar mouse */
 .btn-primary:hover {
-    background-color: #b71c1c;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4);
+    background-color: #b71c1c;          /* Rojo más oscuro */
+    transform: translateY(-2px);        /* Sube 2px */
+    box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4);  /* Sombra */
 }
 
+/* BTN SECONDARY - Botón secundario (blanco con borde) */
+.btn-secondary {
+    background-color: transparent;      /* Fondo transparente */
+    color: var(--color-light);          /* Texto blanco */
+    border: 2px solid var(--color-light);  /* Borde blanco */
+    padding: 12px 30px;                 /* Espaciado interno */
+}
+
+/* BTN SECONDARY HOVER - Efecto al pasar mouse */
+.btn-secondary:hover {
+    background-color: var(--color-light);  /* Fondo blanco */
+    color: var(--color-primary);           /* Texto rojo */
+    transform: translateY(-2px);           /* Sube 2px */
+}
+
+/* BTN LARGE - Botón grande (ancho) */
 .btn-large {
-    padding: 15px 40px;
-    font-size: 16px;
-    width: 100%;
-    max-width: 400px;
-    margin-top: 20px;
+    padding: 15px 40px;                 /* Espaciado más grande */
+    font-size: 16px;                    /* Tamaño más grande */
+    width: 100%;                        /* Ancho completo */
+    max-width: 400px;                   /* Ancho máximo */
+    margin-top: 20px;                   /* Espacio arriba */
 }
 
 /* ==========================================
    SECCIONES GENERALES
+   Estilos comunes para todas las secciones
    ========================================== */
 
+/* SECTION - Todas las secciones de contenido */
 section {
-    padding: 60px 20px;
+    padding: 60px 20px;                 /* Espaciado vertical y horizontal */
 }
 
+/* SECTION TITLE - Títulos de secciones */
 .section-title {
-    font-size: var(--font-size-title);
-    font-weight: bold;
-    color: var(--color-dark);
-    text-align: center;
-    margin-bottom: 15px;
+    font-size: var(--font-size-title);  /* Tamaño de título */
+    font-weight: bold;                  /* Texto grueso */
+    color: var(--color-dark);           /* Texto oscuro */
+    text-align: center;                 /* Centrado */
+    margin-bottom: 15px;                /* Espacio debajo */
 }
 
+/* SECTION SUBTITLE - Subtítulos de secciones */
 .section-subtitle {
-    font-size: 16px;
-    color: var(--color-text-muted);
-    text-align: center;
-    margin-bottom: 40px;
+    font-size: 16px;                    /* Tamaño base */
+    color: var(--color-text-muted);     /* Texto gris */
+    text-align: center;                 /* Centrado */
+    margin-bottom: 40px;                /* Espacio debajo */
 }
 
 /* ==========================================
    SECCIÓN PRESENTACIÓN
+   Información sobre la empresa
    ========================================== */
 
+/* PRESENTACION - Sección de presentación */
 .presentacion {
-    background-color: var(--color-light);
+    background-color: var(--color-light);  /* Fondo blanco */
 }
 
+/* PRESENTATION BOX - Caja con información */
 .presentation-box {
-    background-color: var(--color-bg);
-    border-left: 4px solid var(--color-primary);
-    padding: 30px;
-    border-radius: var(--border-radius);
-    max-width: 800px;
-    margin: 0 auto;
+    background-color: var(--color-bg);     /* Fondo gris claro */
+    border-left: 4px solid var(--color-primary);  /* Borde rojo a la izquierda */
+    padding: 30px;                         /* Espaciado interno */
+    border-radius: var(--border-radius);   /* Esquinas redondeadas */
+    max-width: 800px;                      /* Ancho máximo */
+    margin: 0 auto;                        /* Centrado */
 }
 
+/* PRESENTATION BOX P - Párrafos dentro de la caja */
 .presentation-box p {
-    font-size: 15px;
-    line-height: 1.8;
-    margin-bottom: 15px;
-    color: var(--color-text);
+    font-size: 15px;                    /* Tamaño pequeño */
+    line-height: 1.8;                   /* Altura de línea cómoda */
+    margin-bottom: 15px;                /* Espacio debajo */
+    color: var(--color-text);           /* Texto oscuro */
 }
 
 .presentation-box p:last-child {
-    margin-bottom: 0;
+    margin-bottom: 0;                   /* Sin espacio en último párrafo */
 }
 
 /* ==========================================
    SECCIÓN BENEFICIOS
+   Tarjetas de ventajas
    ========================================== */
 
+/* BENEFICIOS - Sección de beneficios */
 .beneficios {
-    background-color: var(--color-bg);
+    background-color: var(--color-bg);  /* Fondo gris claro */
 }
 
+/* BENEFICIOS GRID - Grid de tarjetas (RESPONSIVO) */
 .beneficios-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
-    margin-top: 40px;
+    display: grid;                                          /* CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));  /* Responsivo automático */
+    gap: 25px;                                              /* Espacio entre tarjetas */
+    margin-top: 40px;                                       /* Espacio arriba */
 }
 
+/* Explicación de "auto-fit minmax":
+   - auto-fit: Las columnas se ajustan automáticamente al ancho disponible
+   - minmax(260px, 1fr): Cada columna mínimo 260px, máximo 1 fracción igual
+   - Si hay espacio para 4 columnas: muestra 4
+   - Si hay espacio para 2 columnas: muestra 2
+   - En móvil (pantalla estrecha): muestra 1 columna
+   ESTO ES RESPONSIVIDAD EN CSS GRID */
+
+/* BENEFIT CARD - Tarjeta individual */
 .benefit-card {
-    background-color: var(--color-light);
-    padding: 30px;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--color-border);
-    text-align: center;
-    transition: var(--transition);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    background-color: var(--color-light);    /* Fondo blanco */
+    padding: 30px;                           /* Espaciado interno */
+    border-radius: var(--border-radius);     /* Esquinas redondeadas */
+    border: 1px solid var(--color-border);   /* Borde gris claro */
+    text-align: center;                      /* Texto centrado */
+    transition: var(--transition);           /* Transición suave */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);  /* Sombra suave */
 }
 
+/* BENEFIT CARD HOVER - Efecto al pasar mouse */
 .benefit-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    border-color: var(--color-primary);
+    transform: translateY(-5px);             /* Sube 5px */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);  /* Sombra más grande */
+    border-color: var(--color-primary);      /* Borde rojo */
 }
 
+/* BENEFIT ICON - Icono dentro de la tarjeta */
 .benefit-icon {
-    width: 50px;
-    height: 50px;
-    margin: 0 auto 15px;
-    background-color: var(--color-primary);
-    color: var(--color-light);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    font-weight: bold;
+    width: 50px;                            /* Ancho 50px */
+    height: 50px;                           /* Alto 50px */
+    margin: 0 auto 15px;                    /* Centrado y espacio debajo */
+    background-color: var(--color-primary);  /* Fondo rojo */
+    color: var(--color-light);              /* Texto blanco */
+    border-radius: 50%;                     /* Circular */
+    display: flex;                          /* Flexbox */
+    align-items: center;                    /* Centrado vertical */
+    justify-content: center;                /* Centrado horizontal */
+    font-size: 24px;                        /* Tamaño grande */
+    font-weight: bold;                      /* Texto grueso */
 }
 
+/* BENEFIT CARD H3 - Título de la tarjeta */
 .benefit-card h3 {
-    font-size: 18px;
-    margin-bottom: 12px;
-    color: var(--color-dark);
+    font-size: 18px;                    /* Tamaño mediano */
+    margin-bottom: 12px;                /* Espacio debajo */
+    color: var(--color-dark);           /* Texto oscuro */
 }
 
+/* BENEFIT CARD P - Descripción en la tarjeta */
 .benefit-card p {
-    font-size: 14px;
-    color: var(--color-text-muted);
-    line-height: 1.6;
+    font-size: 14px;                    /* Tamaño pequeño */
+    color: var(--color-text-muted);     /* Texto gris */
+    line-height: 1.6;                   /* Altura de línea normal */
 }
 
 /* ==========================================
    SECCIÓN CATEGORÍAS (TABLA)
+   Tabla de productos
    ========================================== */
 
+/* CATEGORIAS - Sección de categorías */
 .categorias {
-    background-color: var(--color-light);
+    background-color: var(--color-light);  /* Fondo blanco */
 }
 
+/* TABLE RESPONSIVE - Contenedor responsive para tabla */
 .table-responsive {
-    overflow-x: auto;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+    overflow-x: auto;                   /* Permite scroll horizontal en móviles */
+    border-radius: var(--border-radius);   /* Esquinas redondeadas */
+    box-shadow: var(--box-shadow);      /* Sombra */
 }
 
+/* PRODUCTS TABLE - Tabla de productos */
 .products-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: var(--color-light);
+    width: 100%;                        /* Ancho completo */
+    border-collapse: collapse;          /* Borra bordes dobles */
+    background-color: var(--color-light);  /* Fondo blanco */
 }
 
+/* TABLE THEAD - Encabezados de la tabla */
 .products-table thead {
-    background-color: var(--color-dark);
-    color: var(--color-light);
+    background-color: var(--color-dark);   /* Fondo oscuro */
+    color: var(--color-light);             /* Texto blanco */
 }
 
+/* TABLE TH - Celdas de encabezado */
 .products-table th {
-    padding: 15px;
-    text-align: left;
-    font-weight: bold;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    padding: 15px;                      /* Espaciado interno */
+    text-align: left;                   /* Alineado a la izquierda */
+    font-weight: bold;                  /* Texto grueso */
+    font-size: 13px;                    /* Tamaño pequeño */
+    text-transform: uppercase;          /* Mayúsculas */
+    letter-spacing: 0.5px;              /* Espacio entre letras */
 }
 
+/* TABLE TD - Celdas de datos */
 .products-table td {
-    padding: 15px;
-    border-bottom: 1px solid var(--color-border);
-    font-size: 14px;
+    padding: 15px;                      /* Espaciado interno */
+    border-bottom: 1px solid var(--color-border);  /* Borde inferior */
+    font-size: 14px;                    /* Tamaño pequeño */
 }
 
+/* TABLE TBODY TR - Filas del cuerpo */
 .products-table tbody tr {
-    transition: var(--transition);
+    transition: var(--transition);      /* Transición suave */
 }
 
+/* TABLE ROW HOVER - Efecto al pasar mouse */
 .products-table tbody tr:hover {
-    background-color: #fafafa;
+    background-color: #fafafa;          /* Fondo gris muy claro */
 }
 
+/* TABLE TBODY TR EVEN - Filas pares con color alterno */
 .products-table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9;          /* Gris ligeramente diferente */
 }
 
+/* BADGE - Etiqueta de estado */
 .badge {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
-    text-transform: uppercase;
+    display: inline-block;              /* Inline pero ocupa su espacio */
+    padding: 4px 12px;                  /* Espaciado interno pequeño */
+    border-radius: 20px;                /* Esquinas redondeadas */
+    font-size: 12px;                    /* Tamaño pequeño */
+    font-weight: bold;                  /* Texto grueso */
+    text-transform: uppercase;          /* Mayúsculas */
 }
 
+/* BADGE SUCCESS - Etiqueta de éxito (verde) */
 .badge-success {
-    background-color: #d4edda;
-    color: var(--color-success);
+    background-color: #d4edda;          /* Fondo verde claro */
+    color: var(--color-success);        /* Texto verde */
 }
 
 /* ==========================================
    SECCIÓN MULTIMEDIA
+   Video y galería
    ========================================== */
 
+/* MULTIMEDIA - Sección multimedia */
 .multimedia {
-    background-color: var(--color-bg);
+    background-color: var(--color-bg);  /* Fondo gris claro */
 }
 
+/* MULTIMEDIA GRID - Grid de elementos multimedia (RESPONSIVO) */
 .multimedia-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
+    display: grid;                                          /* CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  /* Responsivo automático */
+    gap: 30px;                                              /* Espacio entre elementos */
+    margin-top: 40px;                                       /* Espacio arriba */
 }
 
+/* Explicación de responsividad:
+   - Si hay espacio para 2 items de 300px: muestra 2 columnas
+   - Si hay espacio para 1 item: muestra 1 columna (móvil)
+   - El gap (30px) se mantiene entre elementos */
+
+/* MULTIMEDIA ITEM - Elemento individual de multimedia */
 .multimedia-item {
-    background-color: var(--color-light);
-    padding: 25px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    border: 1px solid var(--color-border);
+    background-color: var(--color-light);      /* Fondo blanco */
+    padding: 25px;                             /* Espaciado interno */
+    border-radius: var(--border-radius);       /* Esquinas redondeadas */
+    box-shadow: var(--box-shadow);             /* Sombra */
+    border: 1px solid var(--color-border);     /* Borde gris claro */
 }
 
+/* MULTIMEDIA ITEM H3 - Título del elemento */
 .multimedia-item h3 {
-    font-size: 16px;
-    margin-bottom: 15px;
-    color: var(--color-dark);
+    font-size: 16px;                    /* Tamaño mediano */
+    margin-bottom: 15px;                /* Espacio debajo */
+    color: var(--color-dark);           /* Texto oscuro */
 }
 
-.multimedia-item video,
-.multimedia-item audio {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-    background-color: #000;
-    margin-bottom: 15px;
+/* MULTIMEDIA VIDEO - Video HTML5 */
+.multimedia-item video {
+    width: 100%;                        /* Ancho completo */
+    height: auto;                       /* Alto automático */
+    border-radius: 4px;                 /* Esquinas ligeramente redondeadas */
+    background-color: #000;             /* Fondo negro para video */
+    margin-bottom: 15px;                /* Espacio debajo */
 }
 
+/* GALLERY CONTAINER - Contenedor de galería */
+.gallery-container {
+    width: 100%;                        /* Ancho completo */
+    padding: 40px 20px;                 /* Espaciado interno */
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);  /* Gradiente suave */
+    border-radius: var(--border-radius);     /* Esquinas redondeadas */
+    text-align: center;                      /* Texto centrado */
+    border: 2px dashed var(--color-border);  /* Borde punteado */
+}
+
+/* GALLERY PLACEHOLDER - Texto placeholder en la galería */
+.gallery-placeholder {
+    font-size: 18px;                    /* Tamaño mediano */
+    color: var(--color-text-muted);     /* Texto gris */
+    margin-bottom: 10px;                /* Espacio debajo */
+}
+
+/* GALLERY DESCRIPTION - Descripción de la galería */
+.gallery-description {
+    font-size: 14px;                    /* Tamaño pequeño */
+    color: var(--color-text-muted);     /* Texto gris */
+    font-style: italic;                 /* Italic */
+}
+
+/* AUDIO DESCRIPTION - Descripción del audio */
 .audio-description {
+    font-size: 13px;                    /* Tamaño muy pequeño */
+    color: var(--color-text-muted);     /* Texto gris */
+    font-style: italic;                 /* Italic */
+    margin-top: 10px;                   /* Espacio arriba */
+}
+
+/* ==========================================
+   ESTILOS PARA PROMOCIÓN DESTACADA
+   Sección que llama la atención del usuario
+   ========================================== */
+
+/* VIDEO DESCRIPTION - Descripción del video */
+.video-description {
     font-size: 13px;
     color: var(--color-text-muted);
     font-style: italic;
     margin-top: 10px;
 }
 
+/* PROMO HIGHLIGHT - Tarjeta de promoción destacada */
+.promo-highlight {
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);  /* Gradiente naranja suave */
+    border: 2px solid #ff9800;                                       /* Borde naranja */
+    box-shadow: 0 5px 20px rgba(255, 152, 0, 0.3);                 /* Sombra naranja */
+}
+
+/* PROMO CONTAINER - Contenedor de la promoción */
+.promo-container {
+    text-align: center;                 /* Texto centrado */
+    padding: 20px;                      /* Espaciado interno */
+}
+
+/* PROMO BADGE BIG - Badge grande de exclusividad */
+.promo-badge-big {
+    display: inline-block;              /* Inline block */
+    background-color: #d32f2f;          /* Rojo principal */
+    color: white;                       /* Texto blanco */
+    padding: 10px 20px;                 /* Espaciado */
+    border-radius: 25px;                /* Muy redondeado */
+    font-weight: bold;                  /* Texto grueso */
+    font-size: 14px;                    /* Tamaño pequeño */
+    margin-bottom: 15px;                /* Espacio debajo */
+    text-transform: uppercase;          /* Mayúsculas */
+    animation: pulse 2s infinite;       /* Animación pulsante */
+}
+
+/* PROMO TITLE - Título de la promoción */
+.promo-title {
+    font-size: 20px;                    /* Tamaño grande */
+    font-weight: bold;                  /* Texto grueso */
+    color: #d32f2f;                     /* Texto rojo */
+    margin: 10px 0;                     /* Espaciado vertical */
+}
+
+/* PROMO TEXT - Texto descriptivo de promoción */
+.promo-text {
+    font-size: 14px;                    /* Tamaño pequeño */
+    color: var(--color-text-muted);     /* Texto gris */
+    margin: 10px 0;                     /* Espaciado vertical */
+}
+
+/* PROMO LIST - Lista de características */
+.promo-list {
+    list-style: none;                   /* Sin viñetas */
+    padding: 15px 0;                    /* Espaciado */
+    margin: 15px 0;                     /* Espaciado vertical */
+    border-top: 1px solid rgba(0, 0, 0, 0.1);  /* Línea divisoria */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);  /* Línea divisoria */
+}
+
+/* PROMO LIST LI - Items de la lista */
+.promo-list li {
+    padding: 8px 0;                     /* Espaciado */
+    color: var(--color-text);           /* Texto oscuro */
+    font-size: 13px;                    /* Tamaño pequeño */
+}
+
+/* MAP TITLE - Título en el mapa */
+.map-title {
+    font-size: 24px;                    /* Tamaño grande */
+    color: var(--color-dark);           /* Texto oscuro */
+    font-weight: bold;                  /* Texto grueso */
+    margin-bottom: 10px;                /* Espacio debajo */
+}
+
+/* MAP SUBTITLE - Subtítulo en el mapa */
+.map-subtitle {
+    font-size: 14px;                    /* Tamaño pequeño */
+    color: var(--color-text-muted);     /* Texto gris */
+    margin-bottom: 15px;                /* Espacio debajo */
+}
+
+/* MAP ADDRESS - Dirección en el mapa */
+.map-address {
+    font-size: 13px;                    /* Tamaño muy pequeño */
+    color: var(--color-text);           /* Texto oscuro */
+    font-style: italic;                 /* Italic */
+}
+
 /* ==========================================
    SECCIÓN UBICACIÓN
+   Mapa y información de contacto
    ========================================== */
 
+/* UBICACION - Sección de ubicación */
 .ubicacion {
-    background-color: var(--color-light);
+    background-color: var(--color-light);  /* Fondo blanco */
 }
 
+/* MAPA CONTAINER - Contenedor del mapa */
 .mapa-container {
-    margin: 40px 0;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--box-shadow);
+    margin: 40px 0;                     /* Espacio vertical */
+    border-radius: var(--border-radius);   /* Esquinas redondeadas */
+    overflow: hidden;                   /* Corta contenido que sobresale */
+    box-shadow: var(--box-shadow);      /* Sombra */
 }
 
-.mapa-container iframe {
-    border: none;
-    border-radius: var(--border-radius);
+/* MAP CLICKABLE - Área clickeable del mapa (MEJORA DE USABILIDAD) */
+.map-clickable {
+    width: 100%;                        /* Ancho completo */
+    height: 400px;                      /* Alto fijo */
+    background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);  /* Gradiente */
+    border-radius: var(--border-radius);     /* Esquinas redondeadas */
+    display: flex;                      /* Flexbox */
+    align-items: center;                /* Centrado vertical */
+    justify-content: center;            /* Centrado horizontal */
+    cursor: pointer;                    /* Cursor puntero indica que es clickeable */
+    transition: var(--transition);      /* Transición suave */
+    border: 2px solid var(--color-primary);  /* Borde rojo */
 }
 
+/* MAP CLICKABLE HOVER - Efecto al pasar mouse */
+.map-clickable:hover {
+    background: linear-gradient(135deg, #d0d0d0 0%, #e8e8e8 100%);  /* Gradiente más oscuro */
+    transform: scale(1.02);             /* Crece un 2% */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);  /* Sombra mayor */
+}
+
+/* MAP INFO - Información del mapa */
+.map-info {
+    text-align: center;                 /* Texto centrado */
+    padding: 20px;                      /* Espaciado interno */
+}
+
+/* MAP INFO P - Párrafos en el mapa */
+.map-info p {
+    margin: 10px 0;                     /* Espacio vertical */
+    color: var(--color-dark);           /* Texto oscuro */
+    font-weight: bold;                  /* Texto grueso */
+}
+
+/* MAP SECONDARY - Texto secundario en mapa */
+.map-secondary {
+    font-size: 14px;                    /* Tamaño pequeño */
+    color: var(--color-text-muted);     /* Texto gris */
+    font-weight: normal;                /* Peso normal */
+    font-style: italic;                 /* Italic */
+}
+
+/* INFO GRID - Grid de información (RESPONSIVO) */
 .info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 40px;
+    display: grid;                                          /* CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  /* Responsivo automático */
+    gap: 20px;                                              /* Espacio entre elementos */
+    margin-top: 40px;                                       /* Espacio arriba */
 }
 
+/* INFO CARD - Tarjeta de información */
 .info-card {
-    background-color: var(--color-light);
-    padding: 25px;
-    border-radius: var(--border-radius);
-    border: 2px solid var(--color-primary);
-    box-shadow: var(--box-shadow);
+    background-color: var(--color-light);       /* Fondo blanco */
+    padding: 25px;                              /* Espaciado interno */
+    border-radius: var(--border-radius);        /* Esquinas redondeadas */
+    border: 2px solid var(--color-primary);     /* Borde rojo */
+    box-shadow: var(--box-shadow);              /* Sombra */
 }
 
+/* INFO CARD H3 - Título de la tarjeta */
 .info-card h3 {
-    font-size: 16px;
-    margin-bottom: 12px;
-    color: var(--color-dark);
+    font-size: 16px;                    /* Tamaño mediano */
+    margin-bottom: 12px;                /* Espacio debajo */
+    color: var(--color-dark);           /* Texto oscuro */
 }
 
+/* INFO CARD P - Párrafos en la tarjeta */
 .info-card p {
-    font-size: 14px;
-    color: var(--color-text-muted);
-    line-height: 1.8;
+    font-size: 14px;                    /* Tamaño pequeño */
+    color: var(--color-text-muted);     /* Texto gris */
+    line-height: 1.8;                   /* Altura de línea cómoda */
 }
 
 /* ==========================================
    SECCIÓN FORMULARIO
+   Formulario de contacto
    ========================================== */
 
+/* FORMULARIO - Sección de formulario */
 .formulario {
-    background-color: var(--color-bg);
+    background-color: var(--color-bg);  /* Fondo gris claro */
 }
 
+/* CONTACT FORM - Formulario de contacto */
 .contact-form {
-    background-color: var(--color-light);
-    padding: 40px;
-    border-radius: var(--border-radius);
-    max-width: 600px;
-    margin: 0 auto;
-    box-shadow: var(--box-shadow);
+    background-color: var(--color-light);      /* Fondo blanco */
+    padding: 40px;                             /* Espaciado interno */
+    border-radius: var(--border-radius);       /* Esquinas redondeadas */
+    max-width: 600px;                          /* Ancho máximo */
+    margin: 0 auto;                            /* Centrado */
+    box-shadow: var(--box-shadow);             /* Sombra */
 }
 
+/* FORM GROUP - Grupo de campo del formulario */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 20px;                /* Espacio debajo de cada grupo */
 }
 
+/* FORM GROUP LABEL - Etiqueta del campo */
 .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: var(--color-dark);
-    font-size: 14px;
+    display: block;                     /* Ocupa línea completa */
+    margin-bottom: 8px;                 /* Espacio debajo */
+    font-weight: bold;                  /* Texto grueso */
+    color: var(--color-dark);           /* Texto oscuro */
+    font-size: 14px;                    /* Tamaño pequeño */
 }
 
+/* FORM GROUP INPUT y TEXTAREA - Campos de entrada */
 .form-group input,
 .form-group textarea {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
-    font-family: var(--font-main);
-    font-size: 14px;
-    transition: var(--transition);
+    width: 100%;                        /* Ancho completo */
+    padding: 12px 15px;                 /* Espaciado interno */
+    border: 1px solid var(--color-border);  /* Borde gris */
+    border-radius: var(--border-radius);    /* Esquinas redondeadas */
+    font-family: var(--font-main);      /* Misma fuente */
+    font-size: 14px;                    /* Tamaño pequeño */
+    transition: var(--transition);      /* Transición suave */
 }
 
+/* FORM GROUP FOCUS - Cuando el campo está enfocado */
 .form-group input:focus,
 .form-group textarea:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+    outline: none;                      /* Sin contorno por defecto */
+    border-color: var(--color-primary); /* Borde rojo */
+    box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);  /* Sombra roja suave */
 }
 
+/* CONTACT FORM BUTTON - Botón del formulario */
 .contact-form button {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    display: block;                     /* Ocupa línea completa */
+    margin-left: auto;                  /* Centrado */
+    margin-right: auto;                 /* Centrado */
 }
 
 /* ==========================================
    FOOTER
+   Pie de página
    ========================================== */
 
+/* FOOTER - Pie de página */
 .footer {
-    background-color: var(--color-dark);
-    color: var(--color-light);
-    padding: 40px 20px 20px;
+    background-color: var(--color-dark);    /* Fondo oscuro */
+    color: var(--color-light);              /* Texto blanco */
+    padding: 40px 20px 20px;                /* Espaciado */
 }
 
+/* FOOTER CONTENT - Contenido del footer */
 .footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    margin-bottom: 30px;
-    border-bottom: 1px solid #444;
-    padding-bottom: 30px;
+    display: grid;                                          /* CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));  /* Responsivo */
+    gap: 30px;                                              /* Espacio entre columnas */
+    margin-bottom: 30px;                                    /* Espacio debajo */
+    border-bottom: 1px solid #444;                          /* Línea divisoria */
+    padding-bottom: 30px;                                   /* Espacio debajo */
 }
 
+/* FOOTER SECTION - Sección del footer */
 .footer-section h3,
 .footer-section h4 {
-    font-size: 16px;
-    margin-bottom: 12px;
-    color: var(--color-light);
+    font-size: 16px;                    /* Tamaño pequeño */
+    margin-bottom: 12px;                /* Espacio debajo */
+    color: var(--color-light);          /* Texto blanco */
 }
 
 .footer-section h3 {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 18px;                    /* Tamaño un poco mayor */
+    font-weight: bold;                  /* Texto grueso */
 }
 
+/* FOOTER TAGLINE - Eslogan del footer */
 .footer-tagline {
-    color: var(--color-primary);
-    font-size: 12px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-top: 8px;
+    color: var(--color-primary);        /* Color rojo */
+    font-size: 12px;                    /* Tamaño muy pequeño */
+    font-weight: bold;                  /* Texto grueso */
+    text-transform: uppercase;          /* Mayúsculas */
+    margin-top: 8px;                    /* Espacio arriba */
 }
 
+/* FOOTER SECTION P - Párrafos en el footer */
 .footer-section p {
-    font-size: 13px;
-    color: #cccccc;
-    line-height: 1.8;
-    margin-bottom: 5px;
+    font-size: 13px;                    /* Tamaño muy pequeño */
+    color: #cccccc;                     /* Gris claro */
+    line-height: 1.8;                   /* Altura de línea cómoda */
+    margin-bottom: 5px;                 /* Espacio debajo */
 }
 
+/* FOOTER BOTTOM - Línea inferior con copyright */
 .footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid #444;
-    color: #888888;
-    font-size: 12px;
+    text-align: center;                 /* Centrado */
+    padding-top: 20px;                  /* Espacio arriba */
+    border-top: 1px solid #444;         /* Línea divisoria */
+    color: #888888;                     /* Gris medio */
+    font-size: 12px;                    /* Tamaño muy pequeño */
 }
 
 /* ==========================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN - DISEÑO RESPONSIVO
+   Estilos para diferentes tamaños de pantalla
    ========================================== */
 
+/* BREAKPOINT 768PX - Tablets y pantallas medianas */
 @media (max-width: 768px) {
+    /* Explicación de RESPONSIVIDAD en CSS:
+       - Estos estilos se aplican cuando la pantalla es menor de 768px
+       - Se usa para ajustar el diseño en tablets y pantallas pequeñas
+       - Las grid se convierten a columnas simples
+       - Los botones se apilan
+       - El texto se reduce
+    */
+
+    /* HERO - En móvil, la grid pasa a ser 1 columna */
     .hero {
-        grid-template-columns: 1fr;
-        padding: 40px 20px;
-        min-height: auto;
+        grid-template-columns: 1fr;  /* Una sola columna */
+        padding: 40px 20px;          /* Espaciado reducido */
+        min-height: auto;            /* Alto automático */
     }
 
     .hero-title {
-        font-size: 32px;
+        font-size: 32px;             /* Título más pequeño */
     }
 
     .hero-subtitle {
-        font-size: 16px;
+        font-size: 16px;             /* Subtítulo más pequeño */
     }
 
     .hero-image {
-        min-height: 250px;
-        order: -1;
+        min-height: 250px;           /* Alto mínimo reducido */
+        order: -1;                   /* Imagen arriba, contenido abajo */
     }
 
+    /* NAVBAR - Menú vertical en móvil */
     .nav-menu {
-        gap: 15px;
-        font-size: 12px;
+        gap: 15px;                   /* Menos espacio */
+        font-size: 12px;             /* Texto más pequeño */
     }
 
     .navbar-content {
-        flex-direction: column;
-        gap: 15px;
+        flex-direction: column;       /* Logo y menú apilados */
+        gap: 15px;                   /* Espacio entre ellos */
     }
 
+    /* SECTION TITLE - Título más pequeño en móvil */
     .section-title {
-        font-size: 24px;
+        font-size: 24px;             /* Tamaño reducido */
     }
 
+    /* FORM - Padding reducido */
     .contact-form {
-        padding: 25px;
+        padding: 25px;               /* Menos espaciado */
     }
 
+    /* BENEFICIOS GRID - 2 columnas en lugar de 4 */
     .beneficios-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 15px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));  /* Columnas más pequeñas */
+        gap: 15px;                   /* Menos espacio */
     }
 
     .benefit-card {
-        padding: 20px;
+        padding: 20px;               /* Padding reducido */
     }
 
+    /* TABLA - Texto más pequeño */
     .products-table {
-        font-size: 12px;
+        font-size: 12px;             /* Texto reducido */
     }
 
     .products-table th,
     .products-table td {
-        padding: 10px;
+        padding: 10px;               /* Padding reducido */
     }
 
+    /* MULTIMEDIA GRID - 1 columna */
     .multimedia-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;  /* Una sola columna */
     }
 
+    /* INFO GRID - 1 columna */
     .info-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;  /* Una sola columna */
     }
 
+    /* SECTION - Padding reducido */
     section {
-        padding: 40px 20px;
+        padding: 40px 20px;          /* Menos espaciado vertical */
     }
 }
 
+/* BREAKPOINT 480PX - Teléfonos pequeños */
 @media (max-width: 480px) {
+    /* Explicación de RESPONSIVIDAD extrema:
+       - Para pantallas muy pequeñas (teléfonos)
+       - Se reduce todo al máximo
+       - Se usan variables CSS para cambiar tamaños de fuente
+    */
+
+    /* VARIABLES CSS EN MÓVIL - Cambia los tamaños de base */
     :root {
-        --font-size-base: 14px;
-        --font-size-title: 22px;
-        --font-size-hero: 28px;
+        --font-size-base: 14px;      /* Fuente más pequeña */
+        --font-size-title: 22px;     /* Título más pequeño */
+        --font-size-hero: 28px;      /* Hero mucho más pequeño */
     }
 
+    /* LOGO - Más pequeño */
     .logo h1 {
-        font-size: 20px;
+        font-size: 20px;             /* Logo reduce */
     }
 
     .hero-title {
-        font-size: 24px;
+        font-size: 24px;             /* Título hero más pequeño */
     }
 
+    /* NAV MENU - Vertical */
     .nav-menu {
-        flex-direction: column;
-        gap: 10px;
+        flex-direction: column;       /* Menú apilado verticalmente */
+        gap: 10px;                   /* Menos espacio */
     }
 
+    /* BOTONES - Más pequeños */
     .btn {
-        padding: 10px 20px;
-        font-size: 12px;
+        padding: 10px 20px;          /* Padding reducido */
+        font-size: 12px;             /* Texto más pequeño */
     }
 
+    /* SECTION - Padding mínimo */
     section {
-        padding: 30px 15px;
+        padding: 30px 15px;          /* Padding mínimo */
     }
 
     .container {
-        padding: 0 15px;
+        padding: 0 15px;             /* Padding mínimo */
     }
 }
 
 /* ==========================================
    ANIMACIONES
+   Efectos visuales suaves
    ========================================== */
 
+/* KEYFRAMES SLIDEINUP - Animación de entrada */
 @keyframes slideInUp {
     from {
-        opacity: 0;
-        transform: translateY(30px);
+        opacity: 0;                  /* Invisible */
+        transform: translateY(30px); /* 30px abajo */
     }
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1;                  /* Visible */
+        transform: translateY(0);    /* En posición */
     }
 }
 
+/* SECTION TITLE ANIMATION - Títulos se animan al entrar */
 .section-title {
-    animation: slideInUp 0.6s ease-out;
+    animation: slideInUp 0.6s ease-out;  /* Sube suavemente */
 }
 
+/* BENEFIT CARD ANIMATION - Tarjetas se animan al entrar */
 .benefit-card {
-    animation: slideInUp 0.6s ease-out;
+    animation: slideInUp 0.6s ease-out;  /* Sube suavemente */
 }
 
-/* Scroll reveal effect */
+/* FADE IN - Efecto de desvanecimiento */
 .fade-in {
-    opacity: 0;
-    animation: slideInUp 0.8s ease-out forwards;
+    opacity: 0;                          /* Invisible */
+    animation: slideInUp 0.8s ease-out forwards;  /* Se muestra */
+}
+/* VIDEO AJUSTADO */
+.promo-video{
+    width: 100%;
+    max-width: 320px;
+
+    height: 500px;
+
+    object-fit: cover;
+
+    border-radius: 18px;
+
+    display: block;
+
+    margin: 0 auto;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+}
+
+/* Responsive */
+@media (max-width:768px){
+
+    .promo-video{
+        max-width: 100%;
+        height: 450px;
+    }
+
 }

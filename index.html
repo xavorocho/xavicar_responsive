@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- META TAGS - Información sobre la página -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Repuestos Automotrices XAVICAR - Calidad y Confianza</title>
+    <!-- LINK CSS - Conecta el archivo de estilos -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- HEADER/NAVBAR -->
+    <!-- ========================================
+         HEADER/NAVBAR - Barra de navegación superior
+         ======================================== -->
     <header class="navbar">
         <div class="container">
             <div class="navbar-content">
+                <!-- LOGO - Sección del logo y nombre de la empresa -->
                 <div class="logo">
                     <h1>XAVICAR</h1>
                     <p class="tagline">Repuestos Automotrices</p>
                 </div>
+                <!-- NAV MENU - Enlaces de navegación -->
                 <nav class="nav-menu">
                     <a href="#inicio" class="nav-link">Inicio</a>
                     <a href="#productos" class="nav-link">Productos</a>
@@ -25,23 +31,45 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- ========================================
+         HERO SECTION - Sección principal con promoción
+         ======================================== -->
     <section class="hero" id="inicio">
-        <div class="hero-content">
-            <h2 class="hero-title">Repuestos de Calidad</h2>
-            <p class="hero-subtitle">Para tu vehículo, los mejores precios y garantía</p>
-            <a href="#productos" class="btn btn-primary">Ver Catálogo</a>
-        </div>
+        <!-- IMAGEN PRINCIPAL - Banner con la imagen del negocio -->
         <div class="hero-image">
-            <img src="img/banner.png" alt="Banner de repuestos automotrices" class="banner-img">
+            <!-- Nota: Reemplaza "img/banner.png" con tu imagen cuando esté lista -->
+            <img src="img/logo.png" alt="Banner de repuestos automotrices" class="banner-img">
+        </div>
+        <!-- CONTENIDO PROMOCIONAL - Texto y botones de la promoción -->
+        <div class="hero-content">
+            <!-- BADGE - Etiqueta de promoción especial -->
+            <div class="promo-badge">🎁 PROMOCIÓN ESPECIAL</div>
+            <!-- TÍTULO - Título principal de la promoción -->
+            <h2 class="hero-title">¡POR TU COMPRA DE PASTILLAS DE FRENO!</h2>
+            <!-- SUBTÍTULO - Oferta principal destacada -->
+            <h3 class="hero-subtitle">Cambio <span class="highlight">GRATIS</span></h3>
+            <!-- DESCRIPCIÓN - Texto que genera urgencia -->
+            <p class="hero-description">Aprovecha nuestra oferta exclusiva. Válida solo este mes.</p>
+            <!-- BOTONES - Dos opciones de acción -->
+            <div class="hero-buttons">
+                <!-- Botón principal: lleva al formulario de contacto -->
+                <a href="#contacto" class="btn btn-primary btn-large">¡QUIERO MI OFERTA!</a>
+                <!-- Botón secundario: lleva al catálogo de productos -->
+                <a href="#productos" class="btn btn-secondary">Ver Catálogo</a>
+            </div>
         </div>
     </section>
 
-    <!-- SECCIÓN DE PRESENTACIÓN -->
+    <!-- ========================================
+         SECCIÓN DE PRESENTACIÓN - Información sobre la empresa
+         ======================================== -->
     <section class="presentacion" id="presentacion">
         <div class="container">
+            <!-- TÍTULO DE SECCIÓN -->
             <h2 class="section-title">Bienvenido a XAVICAR</h2>
+            <!-- SUBTÍTULO DE SECCIÓN -->
             <p class="section-subtitle">Tu tienda de confianza para repuestos automotrices</p>
+            <!-- CAJA DE PRESENTACIÓN - Párrafos descriptivos -->
             <div class="presentation-box">
                 <p>
                     Somos un negocio familiar dedicado a la venta de repuestos automotrices originales y de calidad.
@@ -57,26 +85,34 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE BENEFICIOS -->
+    <!-- ========================================
+         SECCIÓN DE BENEFICIOS - Ventajas de comprar en XAVICAR
+         ======================================== -->
     <section class="beneficios" id="servicios">
         <div class="container">
+            <!-- TÍTULO DE SECCIÓN -->
             <h2 class="section-title">¿Por qué elegir XAVICAR?</h2>
+            <!-- GRID DE TARJETAS DE BENEFICIOS - Usando CSS Grid para responsive -->
             <div class="beneficios-grid">
+                <!-- Tarjeta 1: Precios -->
                 <div class="benefit-card">
                     <div class="benefit-icon">✓</div>
                     <h3>Precios Competitivos</h3>
                     <p>Los mejores precios del mercado sin comprometer calidad</p>
                 </div>
+                <!-- Tarjeta 2: Productos -->
                 <div class="benefit-card">
                     <div class="benefit-icon">✓</div>
                     <h3>Productos Originales</h3>
                     <p>Solo vendemos repuestos originales y de marcas confiables</p>
                 </div>
+                <!-- Tarjeta 3: Entrega -->
                 <div class="benefit-card">
                     <div class="benefit-icon">✓</div>
                     <h3>Entrega Rápida</h3>
                     <p>Disponibilidad inmediata y envíos en 24-48 horas</p>
                 </div>
+                <!-- Tarjeta 4: Garantía -->
                 <div class="benefit-card">
                     <div class="benefit-icon">✓</div>
                     <h3>Garantía Completa</h3>
@@ -86,12 +122,17 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE CATEGORÍAS (TABLA) -->
+    <!-- ========================================
+         SECCIÓN DE CATEGORÍAS - Tabla de productos
+         ======================================== -->
     <section class="categorias" id="productos">
         <div class="container">
+            <!-- TÍTULO DE SECCIÓN -->
             <h2 class="section-title">Categorías de Productos</h2>
+            <!-- TABLA - Muestra los productos disponibles -->
             <div class="table-responsive">
                 <table class="products-table">
+                    <!-- ENCABEZADOS DE LA TABLA -->
                     <thead>
                         <tr>
                             <th>CATEGORÍA</th>
@@ -99,6 +140,7 @@
                             <th>DISPONIBILIDAD</th>
                         </tr>
                     </thead>
+                    <!-- CUERPO DE LA TABLA - Filas con datos -->
                     <tbody>
                         <tr>
                             <td><strong>Motores y Cilindros</strong></td>
@@ -131,57 +173,88 @@
         </div>
     </section>
 
-    <!-- SECCIÓN MULTIMEDIA -->
+    <!-- ========================================
+         SECCIÓN MULTIMEDIA - Video y promoción especial
+         ======================================== -->
     <section class="multimedia">
         <div class="container">
+            <!-- TÍTULO DE SECCIÓN -->
             <h2 class="section-title">Conoce Nuestro Negocio</h2>
+            <!-- GRID MULTIMEDIA - Usando CSS Grid para responsive -->
             <div class="multimedia-grid">
-                <!-- Video -->
+                <!-- VIDEO PROMOCIONAL -->
                 <div class="multimedia-item">
-                    <h3>Video Promocional</h3>
-                    <video width="100%" height="auto" controls>
-                        <source src="vid/video.mp4" type="video/mp4">
+                    <h3>🎥 Video Promocional</h3>
+                    <!-- Video HTML5 con controles -->
+                    <video class="promo-video" controls>
+                        <source src="vid/promocional.mp4" type="video/mp4">
                         Tu navegador no soporta video HTML5.
                     </video>
+                    <p class="video-description">Mira cómo trabajamos en XAVICAR</p>
                 </div>
-                <!-- Audio -->
-                <div class="multimedia-item">
-                    <h3>Testimonios en Audio</h3>
-                    <audio width="100%" height="auto" controls>
-                        <source src="audio/sonido.mp3" type="audio/mpeg">
-                        Tu navegador no soporta audio HTML5.
-                    </audio>
-                    <p class="audio-description">Escucha los testimonios de nuestros clientes satisfechos</p>
+                <!-- PROMOCIÓN ESPECIAL - Llama la atención del usuario -->
+                <div class="multimedia-item promo-highlight">
+                    <h3>⚡ ¡OFERTA DESTACADA!</h3>
+                    <!-- Contenedor para promoción -->
+                    <div class="promo-container">
+                        <div class="promo-badge-big">EXCLUSIVO</div>
+                        <p class="promo-title">Repuestos Originales</p>
+                        <p class="promo-text">
+                            Todas las marcas confiables con garantía de origen
+                        </p>
+                        <ul class="promo-list">
+                            <li>✓ Batería Premium 12V</li>
+                            <li>✓ Filtros de Aire Original</li>
+                            <li>✓ Pastillas de Freno Certificadas</li>
+                            <li>✓ Aceite Sintético 5W-30</li>
+                        </ul>
+                        <a href="#contacto" class="btn btn-primary">¡Quiero Detalles!</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN DE UBICACIÓN (MAPA) -->
+    <!-- ========================================
+         SECCIÓN DE UBICACIÓN - Mapa clickeable con usabilidad mejorada
+         ======================================== -->
     <section class="ubicacion" id="ubicacion">
         <div class="container">
+            <!-- TÍTULO DE SECCIÓN -->
             <h2 class="section-title">¿Dónde nos encuentras?</h2>
             
+            <!-- MAPA INTERACTIVO CLICKEABLE - MEJORA DE USABILIDAD IMPLEMENTADA -->
+            <!-- 
+                CAMBIO IMPORTANTE:
+                ✓ El usuario ahora puede hacer clic DIRECTAMENTE en la ubicación
+                ✓ Se abre Google Maps en una pestaña nueva sin salir de la página
+                ✓ El cursor cambia a "pointer" para indicar que es clickeable
+                ✓ Hay un efecto hover (crece 2%) para retroalimentación visual
+                ✓ BENEFICIO: Mayor usabilidad - usuario navega al local con 1 clic
+            -->
             <div class="mapa-container">
-                <iframe 
-                    src="https://www.google.com/maps?q=Repuestos+Automotrices+Xavicar+-1.3811164,-78.6079828&hl=es&z=17&output=embed" 
-                    width="100%" 
-                    height="400" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
+                <div class="map-clickable" onclick="window.open('https://www.google.com/maps?q=Repuestos+Automotrices+Xavicar+Quero+Ecuador&hl=es&z=17', '_blank')">
+                    <div class="map-info">
+                        <p class="map-title">📍 HAZA CLIC AQUÍ</p>
+                        <p class="map-subtitle">Para ver nuestra ubicación en Google Maps</p>
+                        <p class="map-address">Pedro Fermin Cevallos y Bernardo Darquea, Quero, Ecuador</p>
+                    </div>
+                </div>
             </div>
 
+            <!-- TARJETAS DE INFORMACIÓN - Contacto y horario -->
             <div class="info-grid">
+                <!-- TARJETA 1: UBICACIÓN -->
                 <div class="info-card">
                     <h3>📍 Ubicación</h3>
                     <p>Pedro Fermin Cevallos y Bernardo Darquea <br>Quero, Ecuador - CP 180602</p>
                 </div>
+                <!-- TARJETA 2: CONTACTO -->
                 <div class="info-card">
                     <h3>📞 Contacto</h3>
-                    <p>Tel: +593 991865076<br>Email:repuestosautomotricesxavicar@gmail.com</p>
+                    <p>Tel: +593 991865076<br>Email: repuestosautomotricesxavicar@gmail.com</p>
                 </div>
+                <!-- TARJETA 3: HORARIO -->
                 <div class="info-card">
                     <h3>⏰ Horario</h3>
                     <p>Lunes - Viernes: 8am - 6pm<br>Sábado: 9am - 2pm | Domingo: 8am - 1pm</p>
@@ -190,63 +263,80 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE FORMULARIO DE CONTACTO -->
+    <!-- ========================================
+         SECCIÓN DE FORMULARIO DE CONTACTO - Contacto directo
+         ======================================== -->
     <section class="formulario" id="contacto">
         <div class="container">
+            <!-- TÍTULO DE SECCIÓN -->
             <h2 class="section-title">Contáctanos</h2>
+            <!-- SUBTÍTULO DE SECCIÓN -->
             <p class="section-subtitle">Envíanos un mensaje y nos pondremos en contacto pronto</p>
             
+            <!-- FORMULARIO - Para que usuarios envíen consultas -->
             <form class="contact-form" method="POST" action="registrar.php">
+                <!-- GRUPO DE FORMULARIO 1: NOMBRE -->
                 <div class="form-group">
                     <label for="nombre">Nombre Completo</label>
                     <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
                 </div>
 
+                <!-- GRUPO DE FORMULARIO 2: EMAIL -->
                 <div class="form-group">
                     <label for="email">Correo Electrónico</label>
                     <input type="email" id="email" name="email" required placeholder="tu@email.com">
                 </div>
 
+                <!-- GRUPO DE FORMULARIO 3: TELÉFONO -->
                 <div class="form-group">
                     <label for="telefono">Teléfono</label>
                     <input type="tel" id="telefono" name="telefono" placeholder="+593 (2) 123-4567">
                 </div>
 
+                <!-- GRUPO DE FORMULARIO 4: MENSAJE -->
                 <div class="form-group">
                     <label for="mensaje">Mensaje</label>
                     <textarea id="mensaje" name="mensaje" rows="6" required placeholder="Escribe tu consulta aquí..."></textarea>
                 </div>
 
+                <!-- BOTÓN DE ENVÍO -->
                 <button type="submit" class="btn btn-primary btn-large">Enviar Consulta</button>
             </form>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- ========================================
+         FOOTER - Pie de página
+         ======================================== -->
     <footer class="footer">
         <div class="container">
+            <!-- CONTENIDO DEL FOOTER - Información de la empresa -->
             <div class="footer-content">
+                <!-- SECCIÓN 1: INFORMACIÓN PRINCIPAL -->
                 <div class="footer-section">
                     <h3>XAVICAR</h3>
                     <p class="footer-tagline">Repuestos Automotrices de Confianza</p>
                 </div>
+                <!-- SECCIÓN 2: CONTACTO -->
                 <div class="footer-section">
                     <h4>Contacto</h4>
                     <p>Tel: +593 991865076</p>
-                    <p>Email:repuestosautomotricesxavicar@gmail.com</p>
+                    <p>Email: repuestosautomotricesxavicar@gmail.com</p>
                 </div>
+                <!-- SECCIÓN 3: UBICACIÓN -->
                 <div class="footer-section">
                     <h4>Ubicación</h4>
                     <p>Pedro Fermin Cevallos<br>Bernardo Darquea</p>
                 </div>
             </div>
+            <!-- PIE DEL FOOTER - Copyright -->
             <div class="footer-bottom">
                 <p>&copy; 2026 Repuestos Automotrices XAVICAR. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- SCRIPT - Archivo JavaScript para interactividad -->
     <script src="js/main.js"></script>
 </body>
 </html>

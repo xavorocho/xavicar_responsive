@@ -232,15 +232,25 @@
                 ✓ Hay un efecto hover (crece 2%) para retroalimentación visual
                 ✓ BENEFICIO: Mayor usabilidad - usuario navega al local con 1 clic
             -->
-            <div class="mapa-container">
-                <div class="map-clickable" onclick="window.open('https://www.google.com/maps?q=Repuestos+Automotrices+Xavicar+Quero+Ecuador&hl=es&z=17', '_blank')">
-                    <div class="map-info">
-                        <p class="map-title">📍 HAZA CLIC AQUÍ</p>
-                        <p class="map-subtitle">Para ver nuestra ubicación en Google Maps</p>
-                        <p class="map-address">Pedro Fermin Cevallos y Bernardo Darquea, Quero, Ecuador</p>
-                    </div>
-                </div>
-            </div>
+          <div class="mapa-container">
+    <!--
+        MAPA REAL DE GOOGLE MAPS - XAVICAR
+        Coordenadas exactas: -1.3811164, -78.6079828
+        El parámetro !2sRepuestos+Automotrices+Xavicar pone el pin con el nombre
+        zoom controlado por el parámetro z=17 (muy cercano al local)
+        loading="lazy" → el mapa carga solo cuando el usuario llega a esta sección
+    -->
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d436!2d-78.6079828!3d-1.3811164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d39d3dd06c8e73%3A0x70c5b21bd3a42a7b!2sRepuestos+Automotrices+Xavicar!5e0!3m2!1ses-419!2sec!4v1"
+        width="100%"
+        height="420"
+        style="border: 0; border-radius: 12px; display: block;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Ubicación de Repuestos Automotrices XAVICAR en Quero, Ecuador">
+    </iframe>
+</div>
 
             <!-- TARJETAS DE INFORMACIÓN - Contacto y horario -->
             <div class="info-grid">

@@ -1,1102 +1,1089 @@
-/* ==========================================
-   ESTILOS GENERALES - XAVICAR
-   Archivo de estilos principal para toda la página
-   ========================================== */
+/* ============================================================
+   XAVICAR - HOJA DE ESTILOS PRINCIPAL
+   Archivo: style.css
+   Descripción: Estilos globales con diseño 100% responsive
+   Breakpoints usados:
+     - Desktop grande : > 1024px
+     - Tablet         : 769px - 1024px
+     - Móvil grande   : 481px - 768px
+     - Móvil pequeño  : < 480px
+   ============================================================ */
 
-/* ==========================================
-   VARIABLES CSS (Reutilización de valores)
-   Define los colores y tamaños que se usan en toda la página
-   ========================================== */
+
+/* ============================================================
+   1. VARIABLES CSS (Design Tokens)
+   Define una sola vez → usa en todo el archivo.
+   Si cambias un color aquí, cambia en toda la página.
+   ============================================================ */
 :root {
-    /* COLORES - Paleta de colores de la marca */
-    --color-primary: #d32f2f;      /* Rojo principal - botones, acentos */
-    --color-dark: #1a1a1a;         /* Negro oscuro - header, footer */
-    --color-light: #ffffff;        /* Blanco - texto principal */
-    --color-bg: #f5f5f5;           /* Gris claro - fondos alternos */
-    --color-text: #333333;         /* Gris oscuro - texto general */
-    --color-text-muted: #666666;   /* Gris medio - texto secundario */
-    --color-border: #dddddd;       /* Gris muy claro - bordes */
-    --color-success: #27ae60;      /* Verde - badges de éxito */
-    
-    /* TIPOGRAFÍA - Estilos de texto */
-    --font-main: 'Arial', sans-serif;  /* Fuente principal */
-    --font-size-base: 16px;         /* Tamaño base para párrafos */
-    --font-size-large: 20px;        /* Tamaño grande */
-    --font-size-title: 28px;        /* Tamaño para títulos de sección */
-    --font-size-hero: 48px;         /* Tamaño grande para hero */
-    
-    /* ESTILOS - Valores reutilizables */
-    --border-radius: 8px;           /* Radio de esquinas redondeadas */
-    --transition: all 0.3s ease;    /* Transición suave para efectos */
-    --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+    /* --- Colores de marca --- */
+    --color-primary:      #d32f2f;   /* Rojo principal: botones, acentos */
+    --color-primary-dark: #b71c1c;   /* Rojo oscuro: hover de botones */
+    --color-dark:         #1a1a1a;   /* Negro: navbar, footer */
+    --color-dark-2:       #2a2a2a;   /* Negro suave: fondos oscuros */
+    --color-light:        #ffffff;   /* Blanco: texto sobre fondos oscuros */
+    --color-bg:           #f5f5f5;   /* Gris claro: fondos alternos de sección */
+    --color-text:         #333333;   /* Gris oscuro: texto principal */
+    --color-text-muted:   #666666;   /* Gris medio: texto secundario */
+    --color-border:       #dddddd;   /* Gris muy claro: bordes */
+    --color-success:      #27ae60;   /* Verde: badges "En Stock" */
+    --color-orange:       #ff9800;   /* Naranja: badges promocionales */
+
+    /* --- Tipografía --- */
+    --font-main:    'Georgia', 'Arial', sans-serif; /* Fuente principal */
+    --fs-xs:        12px;   /* Extra pequeño: copyright, notas */
+    --fs-sm:        14px;   /* Pequeño: etiquetas, descripciones */
+    --fs-base:      16px;   /* Base: texto de párrafos */
+    --fs-md:        18px;   /* Mediano: subtítulos */
+    --fs-lg:        22px;   /* Grande: títulos secundarios */
+    --fs-xl:        28px;   /* Extra grande: títulos de sección */
+    --fs-hero:      42px;   /* Enorme: título principal del hero */
+
+    /* --- Espaciado --- */
+    --gap-sm:   12px;   /* Espacio pequeño entre elementos */
+    --gap-md:   20px;   /* Espacio mediano */
+    --gap-lg:   30px;   /* Espacio grande */
+    --gap-xl:   60px;   /* Espacio de sección (padding vertical) */
+
+    /* --- Bordes y sombras --- */
+    --radius:       8px;                          /* Radio de esquinas */
+    --radius-lg:    16px;                         /* Radio grande: tarjetas */
+    --shadow-sm:    0 2px 8px rgba(0,0,0,0.08);  /* Sombra suave */
+    --shadow-md:    0 6px 20px rgba(0,0,0,0.12); /* Sombra media */
+    --shadow-lg:    0 12px 35px rgba(0,0,0,0.18);/* Sombra pronunciada */
+
+    /* --- Transiciones --- */
+    --transition: all 0.3s ease; /* Velocidad estándar de animaciones */
 }
 
-/* ==========================================
-   RESET Y ESTILOS BASE
-   Elimina estilos por defecto y establece la base
-   ========================================== */
 
-/* Reset universal - Elimina márgenes y paddings por defecto */
-* {
+/* ============================================================
+   2. RESET Y BASE
+   Elimina estilos por defecto del navegador.
+   box-sizing: border-box → el padding NO suma al ancho total.
+   ============================================================ */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;  /* Incluye padding en el ancho total */
+    box-sizing: border-box;
 }
 
-/* HTML - Comportamiento del scroll suave */
 html {
-    scroll-behavior: smooth;  /* Scroll smooth para los enlaces #anchor */
+    /* scroll-behavior: smooth → los enlaces tipo #contacto
+       desplazan la página suavemente en lugar de saltar */
+    scroll-behavior: smooth;
+    font-size: var(--fs-base);
 }
 
-/* BODY - Estilos del cuerpo de la página */
 body {
-    font-family: var(--font-main);      /* Usa la fuente definida */
-    font-size: var(--font-size-base);   /* Tamaño de texto base */
-    line-height: 1.6;                   /* Altura de línea para legibilidad */
-    color: var(--color-text);           /* Color de texto por defecto */
-    background-color: var(--color-light);  /* Fondo blanco */
+    font-family: var(--font-main);
+    line-height: 1.7;
+    color: var(--color-text);
+    background-color: var(--color-light);
+    /* overflow-x: hidden → evita scroll horizontal no deseado
+       causado por elementos que sobresalen del ancho */
+    overflow-x: hidden;
 }
 
-/* CONTENEDOR - Clase reutilizable para limitar ancho */
+img {
+    /* max-width: 100% → las imágenes nunca desbordan su contenedor */
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* ============================================================
+   3. CONTENEDOR GLOBAL
+   Limita el ancho máximo y centra el contenido en pantallas grandes.
+   En pantallas pequeñas el padding lateral evita que el texto
+   toque los bordes del dispositivo.
+   ============================================================ */
 .container {
-    max-width: 1200px;      /* Ancho máximo de 1200px */
-    margin: 0 auto;         /* Centrado horizontal */
-    padding: 0 20px;        /* Espaciado lateral */
+    width: 100%;
+    max-width: 1200px; /* Ancho máximo de diseño */
+    margin: 0 auto;    /* Centrado horizontal */
+    padding: 0 var(--gap-md); /* Respira en los lados */
 }
 
-/* ==========================================
-   NAVBAR / HEADER
-   Barra de navegación superior
-   ========================================== */
 
-/* HEADER - Estilos del encabezado */
+/* ============================================================
+   4. BOTONES
+   Sistema de botones reutilizable.
+   .btn → clase base
+   .btn-primary → botón rojo sólido
+   .btn-secondary → botón con borde blanco (para fondos oscuros)
+   .btn-large → versión grande del botón
+   ============================================================ */
+.btn {
+    display: inline-flex;      /* Flexbox → centra contenido internamente */
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    border-radius: var(--radius);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: var(--transition);
+    white-space: nowrap; /* Evita que el texto del botón se parta en dos líneas */
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    /* translateY(-3px) → sube el botón ligeramente al pasar el mouse */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(211, 47, 47, 0.4);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-light);
+    border-color: var(--color-light);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-light);
+    color: var(--color-primary);
+    transform: translateY(-3px);
+}
+
+.btn-large {
+    padding: 15px 40px;
+    font-size: var(--fs-base);
+}
+
+/* En móvil los botones ocupan el 100% del ancho disponible */
+@media (max-width: 480px) {
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+
+/* ============================================================
+   5. TÍTULOS DE SECCIÓN (reutilizados en todo el sitio)
+   ============================================================ */
+.section-title {
+    font-size: var(--fs-xl);
+    font-weight: 800;
+    color: var(--color-dark);
+    text-align: center;
+    margin-bottom: 10px;
+    /* La línea roja decorativa se crea con ::after */
+    position: relative;
+}
+
+/* Línea decorativa roja debajo del título */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+    margin: 12px auto 0;
+}
+
+.section-subtitle {
+    font-size: var(--fs-base);
+    color: var(--color-text-muted);
+    text-align: center;
+    margin-bottom: var(--gap-lg);
+}
+
+/* Títulos más pequeños en pantallas medianas */
+@media (max-width: 768px) {
+    .section-title { font-size: var(--fs-lg); }
+}
+
+@media (max-width: 480px) {
+    .section-title { font-size: var(--fs-md); }
+}
+
+
+/* ============================================================
+   6. SECCIONES — ESPACIADO VERTICAL GLOBAL
+   Cada sección tiene padding arriba y abajo.
+   Se reduce progresivamente en pantallas más pequeñas.
+   ============================================================ */
+section {
+    padding: var(--gap-xl) var(--gap-md);
+}
+
+@media (max-width: 768px) {
+    section { padding: 48px var(--gap-md); }
+}
+
+@media (max-width: 480px) {
+    section { padding: 36px 15px; }
+}
+
+
+/* ============================================================
+   7. NAVBAR / HEADER
+   - position: sticky → se queda en la parte superior al scrollear
+   - z-index: 1000 → siempre por encima del resto del contenido
+   ============================================================ */
 .navbar {
-    background-color: var(--color-dark);  /* Fondo negro oscuro */
-    padding: 15px 0;                      /* Espaciado vertical */
-    position: sticky;                     /* Se queda en la parte superior al scrollear */
-    top: 0;                               /* Posición en el tope */
-    z-index: 100;                         /* Encima de otros elementos */
-    box-shadow: var(--box-shadow);        /* Sombra suave */
+    background-color: var(--color-dark);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
 }
 
-/* NAVBAR CONTENT - Contenedor del contenido del navbar */
 .navbar-content {
-    display: flex;                    /* Flexbox para alinear elementos horizontalmente */
-    justify-content: space-between;   /* Logo a la izquierda, menú a la derecha */
-    align-items: center;              /* Alineación vertical centrada */
+    display: flex;
+    justify-content: space-between; /* Logo a la izquierda, menú a la derecha */
+    align-items: center;
+    padding: 14px 0;
+    gap: var(--gap-md);
 }
 
-/* LOGO - Sección del logo y nombre */
+/* --- Logo --- */
 .logo {
-    display: flex;              /* Flexbox para alinear logo y tagline */
-    align-items: baseline;      /* Alineación en la línea de base */
-    gap: 8px;                   /* Espacio entre logo y tagline */
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-shrink: 0; /* El logo nunca se encoge aunque falte espacio */
 }
 
-/* LOGO H1 - Título del logo */
 .logo h1 {
-    color: var(--color-light);      /* Texto blanco */
-    font-size: 28px;                /* Tamaño grande */
-    font-weight: bold;              /* Texto grueso */
-    letter-spacing: 2px;            /* Espacio entre letras */
+    color: var(--color-light);
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    line-height: 1;
 }
 
-/* LOGO TAGLINE - Subtítulo del logo */
 .logo .tagline {
-    color: var(--color-primary);    /* Color rojo principal */
-    font-size: 11px;                /* Tamaño pequeño */
-    font-weight: bold;              /* Texto grueso */
-    text-transform: uppercase;      /* Todas mayúsculas */
+    color: var(--color-primary);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
-/* NAV MENU - Menú de navegación */
+/* --- Menú de navegación --- */
 .nav-menu {
-    display: flex;          /* Flexbox para alinear enlaces horizontalmente */
-    gap: 30px;              /* Espacio entre enlaces */
+    display: flex;
+    align-items: center;
+    gap: var(--gap-lg);
 }
 
-/* NAV LINK - Enlace individual del menú */
 .nav-link {
-    color: var(--color-light);      /* Texto blanco */
-    text-decoration: none;          /* Sin subrayado */
-    font-size: 14px;                /* Tamaño pequeño */
-    font-weight: 500;               /* Semi-bold */
-    transition: var(--transition);  /* Transición suave en hover */
-    position: relative;             /* Para el pseudo-elemento ::after */
+    color: rgba(255,255,255,0.85);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+    position: relative;
+    padding-bottom: 4px;
 }
 
-/* NAV LINK HOVER EFFECT - Línea que aparece al pasar el mouse */
+/* Línea roja que aparece debajo del enlace al hacer hover */
 .nav-link::after {
-    content: '';                    /* Crea pseudo-elemento vacío */
-    position: absolute;             /* Posicionado relativo al nav-link */
-    bottom: -5px;                   /* 5px debajo del texto */
-    left: 0;                        /* Alineado a la izquierda */
-    width: 0;                       /* Ancho inicial 0 */
-    height: 2px;                    /* Altura de 2px */
-    background-color: var(--color-primary);  /* Color rojo */
-    transition: var(--transition);  /* Transición suave */
-}
-
-/* NAV LINK HOVER - Cuando pasa el mouse */
-.nav-link:hover::after {
-    width: 100%;  /* La línea se expande al 100% */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;          /* Ancho 0 → invisible por defecto */
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: var(--transition);
+    border-radius: 1px;
 }
 
 .nav-link:hover {
-    color: var(--color-primary);  /* Texto cambia a rojo */
+    color: var(--color-light);
 }
 
-/* ==========================================
-   HERO SECTION
-   Sección principal con promoción
-   ========================================== */
+.nav-link:hover::after {
+    width: 100%; /* Al hacer hover la línea se expande al 100% */
+}
 
-/* HERO - Contenedor principal del hero */
+/* ── Responsive Navbar ── */
+
+/* En tablet: el menú se compacta pero sigue en fila */
+@media (max-width: 900px) {
+    .nav-menu { gap: var(--gap-md); }
+}
+
+/* En móvil: navbar apilado (logo arriba, menú abajo) */
+@media (max-width: 600px) {
+    .navbar-content {
+        flex-direction: column;
+        padding: 12px 0;
+        gap: 10px;
+    }
+    .nav-menu {
+        gap: 16px;
+        flex-wrap: wrap;       /* Los ítems se bajan de línea si no caben */
+        justify-content: center;
+    }
+    .nav-link { font-size: var(--fs-xs); }
+}
+
+
+/* ============================================================
+   8. HERO SECTION
+   Layout de dos columnas: imagen | contenido
+   En móvil pasa a una sola columna apilada.
+   ============================================================ */
 .hero {
-    display: grid;                          /* Usa CSS Grid */
-    grid-template-columns: 1fr 1fr;         /* Dos columnas iguales */
-    align-items: center;                    /* Alineación vertical centrada */
-    gap: 40px;                              /* Espacio entre columnas */
-    padding: 80px 20px;                     /* Espaciado vertical y horizontal */
-    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);  /* Gradiente oscuro */
-    min-height: 500px;                      /* Altura mínima */
+    display: grid;
+    /* 1fr 1fr → dos columnas iguales en escritorio */
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--gap-lg);
+    padding: 80px var(--gap-md);
+    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-2) 100%);
+    min-height: 520px;
 }
 
-/* HERO CONTENT - Contenido del lado derecho */
-.hero-content {
-    color: var(--color-light);  /* Texto blanco */
-}
-
-/* PROMO BADGE - Etiqueta de promoción */
-.promo-badge {
-    display: inline-block;                          /* Inline pero ocupa su espacio */
-    background-color: #ff9800;                      /* Color naranja */
-    color: var(--color-light);                      /* Texto blanco */
-    padding: 8px 15px;                              /* Espaciado interno */
-    border-radius: 20px;                            /* Esquinas redondeadas */
-    font-size: 12px;                                /* Tamaño pequeño */
-    font-weight: bold;                              /* Texto grueso */
-    text-transform: uppercase;                      /* Mayúsculas */
-    letter-spacing: 1px;                            /* Espacio entre letras */
-    margin-bottom: 20px;                            /* Espacio debajo */
-    animation: pulse 2s infinite;                   /* Animación pulsante */
-}
-
-/* ANIMACIÓN PULSE - Hace que el badge pulse */
-@keyframes pulse {
-    0%, 100% { 
-        transform: scale(1);                        /* Tamaño normal */
-        box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7);  /* Sin sombra */
-    }
-    50% { 
-        transform: scale(1.05);                     /* Crece un 5% */
-        box-shadow: 0 0 0 10px rgba(255, 152, 0, 0);  /* Sombra expandida */
-    }
-}
-
-/* HERO TITLE - Título principal */
-.hero-title {
-    font-size: var(--font-size-hero);   /* Tamaño grande */
-    font-weight: bold;                  /* Texto grueso */
-    margin-bottom: 20px;                /* Espacio debajo */
-    line-height: 1.2;                   /* Altura de línea compacta */
-}
-
-/* HERO SUBTITLE - Subtítulo con la oferta */
-.hero-subtitle {
-    font-size: var(--font-size-large);  /* Tamaño grande */
-    color: #ffc107;                     /* Color amarillo */
-    margin-bottom: 30px;                /* Espacio debajo */
-    line-height: 1.5;                   /* Altura de línea normal */
-}
-
-/* HIGHLIGHT - Palabra destacada (GRATIS) */
-.highlight {
-    color: #ff5722;                     /* Color rojo-naranja */
-    font-size: 1.2em;                   /* 20% más grande */
-    text-transform: uppercase;          /* Mayúsculas */
-    font-weight: 900;                   /* Muy grueso */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);  /* Sombra */
-}
-
-/* HERO DESCRIPTION - Descripción que genera urgencia */
-.hero-description {
-    font-size: 16px;                    /* Tamaño base */
-    color: #e8e8e8;                     /* Gris claro */
-    margin-bottom: 30px;                /* Espacio debajo */
-    line-height: 1.6;                   /* Altura de línea normal */
-}
-
-/* HERO IMAGE - Contenedor de imagen */
+/* --- Imagen del hero --- */
 .hero-image {
-    position: relative;                 /* Posicionamiento relativo */
-    height: 100%;                       /* Alto del grid */
-    min-height: 350px;                  /* Alto mínimo */
+    position: relative;
+    width: 100%;
+    min-height: 360px;
 }
 
-/* BANNER IMAGE - Imagen del banner */
 .banner-img {
-    width: 100%;                        /* Ancho completo */
-    height: 100%;                       /* Alto completo */
-    object-fit: cover;                  /* Recorta la imagen para llenar */
-    border-radius: var(--border-radius);  /* Esquinas redondeadas */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);  /* Sombra */
+    width: 100%;
+    height: 100%;
+    min-height: 360px;
+    object-fit: cover;        /* Recorta la imagen para llenar el contenedor */
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
 }
 
-/* HERO BUTTONS - Contenedor de botones */
+/* --- Contenido del hero --- */
+.hero-content {
+    color: var(--color-light);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Badge pulsante "Promoción especial" */
+.promo-badge {
+    display: inline-block;
+    background-color: var(--color-orange);
+    color: var(--color-light);
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    align-self: flex-start;  /* No se estira al ancho completo */
+    animation: pulse 2.5s infinite;
+}
+
+.hero-title {
+    font-size: var(--fs-hero);
+    font-weight: 900;
+    line-height: 1.15;
+}
+
+.hero-subtitle {
+    font-size: var(--fs-lg);
+    color: #ffc107;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+/* Palabra "GRATIS" más grande y llamativa */
+.highlight {
+    color: #ff5722;
+    font-size: 1.3em; /* 30% más grande que su padre */
+    font-weight: 900;
+    text-transform: uppercase;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.hero-description {
+    font-size: var(--fs-base);
+    color: rgba(255,255,255,0.8);
+    max-width: 420px;
+}
+
 .hero-buttons {
-    display: flex;                      /* Flexbox para botones en fila */
-    gap: 15px;                          /* Espacio entre botones */
-    flex-wrap: wrap;                    /* Los botones bajan de línea si no caben */
-    align-items: center;                /* Alineación vertical */
-    margin-top: 30px;                   /* Espacio arriba */
+    display: flex;
+    gap: var(--gap-sm);
+    flex-wrap: wrap; /* Los botones se bajan si no caben en una línea */
+    align-items: center;
+    margin-top: 8px;
 }
 
-/* ==========================================
-   BOTONES - Estilos generales de botones
-   ========================================== */
+/* ── Responsive Hero ── */
 
-/* BTN - Clase base de botones */
-.btn {
-    display: inline-block;              /* Se comporta como bloque pero inline */
-    padding: 12px 30px;                 /* Espaciado interno */
-    border-radius: var(--border-radius);  /* Esquinas redondeadas */
-    text-decoration: none;              /* Sin subrayado */
-    font-weight: bold;                  /* Texto grueso */
-    text-align: center;                 /* Texto centrado */
-    border: none;                       /* Sin borde */
-    cursor: pointer;                    /* Cursor puntero */
-    transition: var(--transition);      /* Transición suave */
-    font-size: 14px;                    /* Tamaño pequeño */
+/* Tablet: el hero ocupa más altura relativa */
+@media (max-width: 900px) {
+    .hero { padding: 60px var(--gap-md); gap: var(--gap-md); }
+    .hero-title { font-size: 34px; }
 }
 
-/* BTN PRIMARY - Botón principal (rojo) */
-.btn-primary {
-    background-color: var(--color-primary);  /* Fondo rojo */
-    color: var(--color-light);               /* Texto blanco */
+/* Móvil: pasa a una sola columna.
+   order: -1 → la imagen sube y el texto queda abajo */
+@media (max-width: 768px) {
+    .hero {
+        grid-template-columns: 1fr; /* Una sola columna */
+        padding: 40px var(--gap-md);
+        min-height: auto;
+    }
+    .hero-image {
+        min-height: 240px;
+        order: -1; /* Imagen PRIMERO, luego el texto */
+    }
+    .banner-img { min-height: 240px; }
+    .hero-title { font-size: 28px; }
+    .hero-subtitle { font-size: var(--fs-base); }
+    .hero-buttons { flex-direction: column; }
+    .btn { width: 100%; }
 }
 
-/* BTN PRIMARY HOVER - Efecto al pasar mouse */
-.btn-primary:hover {
-    background-color: #b71c1c;          /* Rojo más oscuro */
-    transform: translateY(-2px);        /* Sube 2px */
-    box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4);  /* Sombra */
+@media (max-width: 480px) {
+    .hero { padding: 32px 15px; }
+    .hero-title { font-size: 22px; }
 }
 
-/* BTN SECONDARY - Botón secundario (blanco con borde) */
-.btn-secondary {
-    background-color: transparent;      /* Fondo transparente */
-    color: var(--color-light);          /* Texto blanco */
-    border: 2px solid var(--color-light);  /* Borde blanco */
-    padding: 12px 30px;                 /* Espaciado interno */
+
+/* ============================================================
+   9. ANIMACIÓN PULSE
+   Usada en los badges promocionales.
+   scale(1.05) → crece un 5% en el punto intermedio
+   box-shadow → crea efecto de "onda" que se expande
+   ============================================================ */
+@keyframes pulse {
+    0%,100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255,152,0,0.6);
+    }
+    50% {
+        transform: scale(1.04);
+        box-shadow: 0 0 0 10px rgba(255,152,0,0);
+    }
 }
 
-/* BTN SECONDARY HOVER - Efecto al pasar mouse */
-.btn-secondary:hover {
-    background-color: var(--color-light);  /* Fondo blanco */
-    color: var(--color-primary);           /* Texto rojo */
-    transform: translateY(-2px);           /* Sube 2px */
-}
 
-/* BTN LARGE - Botón grande (ancho) */
-.btn-large {
-    padding: 15px 40px;                 /* Espaciado más grande */
-    font-size: 16px;                    /* Tamaño más grande */
-    width: 100%;                        /* Ancho completo */
-    max-width: 400px;                   /* Ancho máximo */
-    margin-top: 20px;                   /* Espacio arriba */
-}
-
-/* ==========================================
-   SECCIONES GENERALES
-   Estilos comunes para todas las secciones
-   ========================================== */
-
-/* SECTION - Todas las secciones de contenido */
-section {
-    padding: 60px 20px;                 /* Espaciado vertical y horizontal */
-}
-
-/* SECTION TITLE - Títulos de secciones */
-.section-title {
-    font-size: var(--font-size-title);  /* Tamaño de título */
-    font-weight: bold;                  /* Texto grueso */
-    color: var(--color-dark);           /* Texto oscuro */
-    text-align: center;                 /* Centrado */
-    margin-bottom: 15px;                /* Espacio debajo */
-}
-
-/* SECTION SUBTITLE - Subtítulos de secciones */
-.section-subtitle {
-    font-size: 16px;                    /* Tamaño base */
-    color: var(--color-text-muted);     /* Texto gris */
-    text-align: center;                 /* Centrado */
-    margin-bottom: 40px;                /* Espacio debajo */
-}
-
-/* ==========================================
-   SECCIÓN PRESENTACIÓN
-   Información sobre la empresa
-   ========================================== */
-
-/* PRESENTACION - Sección de presentación */
+/* ============================================================
+   10. SECCIÓN PRESENTACIÓN
+   ============================================================ */
 .presentacion {
-    background-color: var(--color-light);  /* Fondo blanco */
+    background-color: var(--color-light);
 }
 
-/* PRESENTATION BOX - Caja con información */
 .presentation-box {
-    background-color: var(--color-bg);     /* Fondo gris claro */
-    border-left: 4px solid var(--color-primary);  /* Borde rojo a la izquierda */
-    padding: 30px;                         /* Espaciado interno */
-    border-radius: var(--border-radius);   /* Esquinas redondeadas */
-    max-width: 800px;                      /* Ancho máximo */
-    margin: 0 auto;                        /* Centrado */
+    background-color: var(--color-bg);
+    /* border-left → línea roja lateral que da carácter */
+    border-left: 5px solid var(--color-primary);
+    padding: var(--gap-lg);
+    border-radius: var(--radius);
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: var(--shadow-sm);
 }
 
-/* PRESENTATION BOX P - Párrafos dentro de la caja */
 .presentation-box p {
-    font-size: 15px;                    /* Tamaño pequeño */
-    line-height: 1.8;                   /* Altura de línea cómoda */
-    margin-bottom: 15px;                /* Espacio debajo */
-    color: var(--color-text);           /* Texto oscuro */
+    font-size: var(--fs-sm);
+    line-height: 1.9;
+    color: var(--color-text);
+    margin-bottom: var(--gap-sm);
 }
 
-.presentation-box p:last-child {
-    margin-bottom: 0;                   /* Sin espacio en último párrafo */
+.presentation-box p:last-child { margin-bottom: 0; }
+
+@media (max-width: 480px) {
+    .presentation-box { padding: var(--gap-md); }
 }
 
-/* ==========================================
-   SECCIÓN BENEFICIOS
-   Tarjetas de ventajas
-   ========================================== */
 
-/* BENEFICIOS - Sección de beneficios */
+/* ============================================================
+   11. SECCIÓN BENEFICIOS (tarjetas ✓)
+   CSS Grid con auto-fit:
+   - En escritorio: 4 columnas
+   - En tablet: 2 columnas (automático)
+   - En móvil: 1 columna (automático)
+   El navegador calcula cuántas columnas caben según minmax(240px,1fr)
+   ============================================================ */
 .beneficios {
-    background-color: var(--color-bg);  /* Fondo gris claro */
+    background-color: var(--color-bg);
 }
 
-/* BENEFICIOS GRID - Grid de tarjetas (RESPONSIVO) */
 .beneficios-grid {
-    display: grid;                                          /* CSS Grid */
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));  /* Responsivo automático */
-    gap: 25px;                                              /* Espacio entre tarjetas */
-    margin-top: 40px;                                       /* Espacio arriba */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--gap-md);
+    margin-top: var(--gap-lg);
 }
 
-/* Explicación de "auto-fit minmax":
-   - auto-fit: Las columnas se ajustan automáticamente al ancho disponible
-   - minmax(260px, 1fr): Cada columna mínimo 260px, máximo 1 fracción igual
-   - Si hay espacio para 4 columnas: muestra 4
-   - Si hay espacio para 2 columnas: muestra 2
-   - En móvil (pantalla estrecha): muestra 1 columna
-   ESTO ES RESPONSIVIDAD EN CSS GRID */
-
-/* BENEFIT CARD - Tarjeta individual */
 .benefit-card {
-    background-color: var(--color-light);    /* Fondo blanco */
-    padding: 30px;                           /* Espaciado interno */
-    border-radius: var(--border-radius);     /* Esquinas redondeadas */
-    border: 1px solid var(--color-border);   /* Borde gris claro */
-    text-align: center;                      /* Texto centrado */
-    transition: var(--transition);           /* Transición suave */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);  /* Sombra suave */
+    background-color: var(--color-light);
+    padding: 28px 24px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
 }
 
-/* BENEFIT CARD HOVER - Efecto al pasar mouse */
+/* Al hacer hover la tarjeta sube y aparece borde rojo */
 .benefit-card:hover {
-    transform: translateY(-5px);             /* Sube 5px */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);  /* Sombra más grande */
-    border-color: var(--color-primary);      /* Borde rojo */
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
 }
 
-/* BENEFIT ICON - Icono dentro de la tarjeta */
+/* Círculo rojo con el ícono ✓ */
 .benefit-icon {
-    width: 50px;                            /* Ancho 50px */
-    height: 50px;                           /* Alto 50px */
-    margin: 0 auto 15px;                    /* Centrado y espacio debajo */
-    background-color: var(--color-primary);  /* Fondo rojo */
-    color: var(--color-light);              /* Texto blanco */
-    border-radius: 50%;                     /* Circular */
-    display: flex;                          /* Flexbox */
-    align-items: center;                    /* Centrado vertical */
-    justify-content: center;                /* Centrado horizontal */
-    font-size: 24px;                        /* Tamaño grande */
-    font-weight: bold;                      /* Texto grueso */
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 16px;
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    border-radius: 50%;          /* Círculo perfecto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 900;
+    box-shadow: 0 4px 12px rgba(211,47,47,0.35);
 }
 
-/* BENEFIT CARD H3 - Título de la tarjeta */
 .benefit-card h3 {
-    font-size: 18px;                    /* Tamaño mediano */
-    margin-bottom: 12px;                /* Espacio debajo */
-    color: var(--color-dark);           /* Texto oscuro */
+    font-size: var(--fs-base);
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 10px;
 }
 
-/* BENEFIT CARD P - Descripción en la tarjeta */
 .benefit-card p {
-    font-size: 14px;                    /* Tamaño pequeño */
-    color: var(--color-text-muted);     /* Texto gris */
-    line-height: 1.6;                   /* Altura de línea normal */
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
 }
 
-/* ==========================================
-   SECCIÓN CATEGORÍAS (TABLA)
-   Tabla de productos
-   ========================================== */
+/* En móvil pequeño las tarjetas usan columna única */
+@media (max-width: 480px) {
+    .beneficios-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
-/* CATEGORIAS - Sección de categorías */
+
+/* ============================================================
+   12. SECCIÓN CATEGORÍAS (tabla de productos)
+   table-responsive → permite scroll horizontal en pantallas
+   muy angostas sin romper el layout de la página
+   ============================================================ */
 .categorias {
-    background-color: var(--color-light);  /* Fondo blanco */
+    background-color: var(--color-light);
 }
 
-/* TABLE RESPONSIVE - Contenedor responsive para tabla */
 .table-responsive {
-    overflow-x: auto;                   /* Permite scroll horizontal en móviles */
-    border-radius: var(--border-radius);   /* Esquinas redondeadas */
-    box-shadow: var(--box-shadow);      /* Sombra */
+    overflow-x: auto; /* Scroll horizontal si la tabla no cabe */
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
 }
 
-/* PRODUCTS TABLE - Tabla de productos */
 .products-table {
-    width: 100%;                        /* Ancho completo */
-    border-collapse: collapse;          /* Borra bordes dobles */
-    background-color: var(--color-light);  /* Fondo blanco */
+    width: 100%;
+    min-width: 480px; /* Ancho mínimo de la tabla antes de scrollear */
+    border-collapse: collapse;
+    background-color: var(--color-light);
 }
 
-/* TABLE THEAD - Encabezados de la tabla */
 .products-table thead {
-    background-color: var(--color-dark);   /* Fondo oscuro */
-    color: var(--color-light);             /* Texto blanco */
+    background-color: var(--color-dark);
+    color: var(--color-light);
 }
 
-/* TABLE TH - Celdas de encabezado */
 .products-table th {
-    padding: 15px;                      /* Espaciado interno */
-    text-align: left;                   /* Alineado a la izquierda */
-    font-weight: bold;                  /* Texto grueso */
-    font-size: 13px;                    /* Tamaño pequeño */
-    text-transform: uppercase;          /* Mayúsculas */
-    letter-spacing: 0.5px;              /* Espacio entre letras */
+    padding: 14px 16px;
+    text-align: left;
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* TABLE TD - Celdas de datos */
 .products-table td {
-    padding: 15px;                      /* Espaciado interno */
-    border-bottom: 1px solid var(--color-border);  /* Borde inferior */
-    font-size: 14px;                    /* Tamaño pequeño */
+    padding: 14px 16px;
+    font-size: var(--fs-sm);
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: middle;
 }
 
-/* TABLE TBODY TR - Filas del cuerpo */
-.products-table tbody tr {
-    transition: var(--transition);      /* Transición suave */
-}
-
-/* TABLE ROW HOVER - Efecto al pasar mouse */
-.products-table tbody tr:hover {
-    background-color: #fafafa;          /* Fondo gris muy claro */
-}
-
-/* TABLE TBODY TR EVEN - Filas pares con color alterno */
+/* Filas alternas con fondo ligeramente diferente (zebra striping) */
 .products-table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;          /* Gris ligeramente diferente */
+    background-color: #fafafa;
 }
 
-/* BADGE - Etiqueta de estado */
+.products-table tbody tr {
+    transition: var(--transition);
+}
+
+.products-table tbody tr:hover {
+    background-color: #fff5f5; /* Leve toque rojo al hacer hover */
+}
+
+/* Badge "En Stock" */
 .badge {
-    display: inline-block;              /* Inline pero ocupa su espacio */
-    padding: 4px 12px;                  /* Espaciado interno pequeño */
-    border-radius: 20px;                /* Esquinas redondeadas */
-    font-size: 12px;                    /* Tamaño pequeño */
-    font-weight: bold;                  /* Texto grueso */
-    text-transform: uppercase;          /* Mayúsculas */
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-/* BADGE SUCCESS - Etiqueta de éxito (verde) */
 .badge-success {
-    background-color: #d4edda;          /* Fondo verde claro */
-    color: var(--color-success);        /* Texto verde */
+    background-color: #d4edda;
+    color: var(--color-success);
 }
 
-/* ==========================================
-   SECCIÓN MULTIMEDIA
-   Video y galería
-   ========================================== */
 
-/* MULTIMEDIA - Sección multimedia */
+/* ============================================================
+   13. SECCIÓN MULTIMEDIA
+   Grid de dos columnas: video | oferta destacada
+   En móvil: se apila en una sola columna
+   ============================================================ */
 .multimedia {
-    background-color: var(--color-bg);  /* Fondo gris claro */
+    background-color: var(--color-bg);
 }
 
-/* MULTIMEDIA GRID - Grid de elementos multimedia (RESPONSIVO) */
 .multimedia-grid {
-    display: grid;                                          /* CSS Grid */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  /* Responsivo automático */
-    gap: 30px;                                              /* Espacio entre elementos */
-    margin-top: 40px;                                       /* Espacio arriba */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--gap-lg);
+    margin-top: var(--gap-lg);
 }
 
-/* Explicación de responsividad:
-   - Si hay espacio para 2 items de 300px: muestra 2 columnas
-   - Si hay espacio para 1 item: muestra 1 columna (móvil)
-   - El gap (30px) se mantiene entre elementos */
-
-/* MULTIMEDIA ITEM - Elemento individual de multimedia */
 .multimedia-item {
-    background-color: var(--color-light);      /* Fondo blanco */
-    padding: 25px;                             /* Espaciado interno */
-    border-radius: var(--border-radius);       /* Esquinas redondeadas */
-    box-shadow: var(--box-shadow);             /* Sombra */
-    border: 1px solid var(--color-border);     /* Borde gris claro */
+    background-color: var(--color-light);
+    padding: 28px 24px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
 }
 
-/* MULTIMEDIA ITEM H3 - Título del elemento */
 .multimedia-item h3 {
-    font-size: 16px;                    /* Tamaño mediano */
-    margin-bottom: 15px;                /* Espacio debajo */
-    color: var(--color-dark);           /* Texto oscuro */
+    font-size: var(--fs-base);
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 16px;
 }
 
-/* MULTIMEDIA VIDEO - Video HTML5 */
-.multimedia-item video {
-    width: 100%;                        /* Ancho completo */
-    height: auto;                       /* Alto automático */
-    border-radius: 4px;                 /* Esquinas ligeramente redondeadas */
-    background-color: #000;             /* Fondo negro para video */
-    margin-bottom: 15px;                /* Espacio debajo */
+/* --- Video promocional ---
+   max-width: 320px → en escritorio es un video vertical estilo Reels
+   En móvil ocupa el 100% disponible */
+.promo-video {
+    width: 100%;
+    max-width: 320px;
+    height: 500px;
+    object-fit: cover;        /* Recorta para mantener proporción */
+    border-radius: var(--radius-lg);
+    display: block;
+    margin: 0 auto;
+    box-shadow: var(--shadow-md);
 }
 
-/* GALLERY CONTAINER - Contenedor de galería */
-.gallery-container {
-    width: 100%;                        /* Ancho completo */
-    padding: 40px 20px;                 /* Espaciado interno */
-    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);  /* Gradiente suave */
-    border-radius: var(--border-radius);     /* Esquinas redondeadas */
-    text-align: center;                      /* Texto centrado */
-    border: 2px dashed var(--color-border);  /* Borde punteado */
-}
-
-/* GALLERY PLACEHOLDER - Texto placeholder en la galería */
-.gallery-placeholder {
-    font-size: 18px;                    /* Tamaño mediano */
-    color: var(--color-text-muted);     /* Texto gris */
-    margin-bottom: 10px;                /* Espacio debajo */
-}
-
-/* GALLERY DESCRIPTION - Descripción de la galería */
-.gallery-description {
-    font-size: 14px;                    /* Tamaño pequeño */
-    color: var(--color-text-muted);     /* Texto gris */
-    font-style: italic;                 /* Italic */
-}
-
-/* AUDIO DESCRIPTION - Descripción del audio */
-.audio-description {
-    font-size: 13px;                    /* Tamaño muy pequeño */
-    color: var(--color-text-muted);     /* Texto gris */
-    font-style: italic;                 /* Italic */
-    margin-top: 10px;                   /* Espacio arriba */
-}
-
-/* ==========================================
-   ESTILOS PARA PROMOCIÓN DESTACADA
-   Sección que llama la atención del usuario
-   ========================================== */
-
-/* VIDEO DESCRIPTION - Descripción del video */
 .video-description {
-    font-size: 13px;
+    font-size: var(--fs-xs);
     color: var(--color-text-muted);
     font-style: italic;
-    margin-top: 10px;
+    margin-top: 12px;
+    text-align: center;
 }
 
-/* PROMO HIGHLIGHT - Tarjeta de promoción destacada */
+/* --- Tarjeta de oferta destacada (fondo naranja suave) --- */
 .promo-highlight {
-    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);  /* Gradiente naranja suave */
-    border: 2px solid #ff9800;                                       /* Borde naranja */
-    box-shadow: 0 5px 20px rgba(255, 152, 0, 0.3);                 /* Sombra naranja */
+    background: linear-gradient(135deg, #fff8e1 0%, #fff3e0 100%);
+    border: 2px solid var(--color-orange);
+    box-shadow: 0 6px 24px rgba(255,152,0,0.25);
 }
 
-/* PROMO CONTAINER - Contenedor de la promoción */
 .promo-container {
-    text-align: center;                 /* Texto centrado */
-    padding: 20px;                      /* Espaciado interno */
+    text-align: center;
+    padding: 16px 8px;
 }
 
-/* PROMO BADGE BIG - Badge grande de exclusividad */
+/* Badge rojo "EXCLUSIVO" con animación pulsante */
 .promo-badge-big {
-    display: inline-block;              /* Inline block */
-    background-color: #d32f2f;          /* Rojo principal */
-    color: white;                       /* Texto blanco */
-    padding: 10px 20px;                 /* Espaciado */
-    border-radius: 25px;                /* Muy redondeado */
-    font-weight: bold;                  /* Texto grueso */
-    font-size: 14px;                    /* Tamaño pequeño */
-    margin-bottom: 15px;                /* Espacio debajo */
-    text-transform: uppercase;          /* Mayúsculas */
-    animation: pulse 2s infinite;       /* Animación pulsante */
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    animation: pulse 2.5s infinite;
 }
 
-/* PROMO TITLE - Título de la promoción */
 .promo-title {
-    font-size: 20px;                    /* Tamaño grande */
-    font-weight: bold;                  /* Texto grueso */
-    color: #d32f2f;                     /* Texto rojo */
-    margin: 10px 0;                     /* Espaciado vertical */
+    font-size: var(--fs-md);
+    font-weight: 800;
+    color: var(--color-primary);
+    margin: 10px 0;
 }
 
-/* PROMO TEXT - Texto descriptivo de promoción */
 .promo-text {
-    font-size: 14px;                    /* Tamaño pequeño */
-    color: var(--color-text-muted);     /* Texto gris */
-    margin: 10px 0;                     /* Espaciado vertical */
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    margin: 10px 0;
+    line-height: 1.6;
 }
 
-/* PROMO LIST - Lista de características */
+/* Lista de productos destacados */
 .promo-list {
-    list-style: none;                   /* Sin viñetas */
-    padding: 15px 0;                    /* Espaciado */
-    margin: 15px 0;                     /* Espaciado vertical */
-    border-top: 1px solid rgba(0, 0, 0, 0.1);  /* Línea divisoria */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);  /* Línea divisoria */
+    padding: 16px 0;
+    margin: 16px 0;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
-/* PROMO LIST LI - Items de la lista */
 .promo-list li {
-    padding: 8px 0;                     /* Espaciado */
-    color: var(--color-text);           /* Texto oscuro */
-    font-size: 13px;                    /* Tamaño pequeño */
+    padding: 8px 0;
+    font-size: var(--fs-sm);
+    color: var(--color-text);
+    font-weight: 600;
 }
 
-/* MAP TITLE - Título en el mapa */
-.map-title {
-    font-size: 24px;                    /* Tamaño grande */
-    color: var(--color-dark);           /* Texto oscuro */
-    font-weight: bold;                  /* Texto grueso */
-    margin-bottom: 10px;                /* Espacio debajo */
+/* Responsive multimedia */
+@media (max-width: 768px) {
+    .promo-video {
+        max-width: 100%;
+        height: 380px;
+    }
 }
 
-/* MAP SUBTITLE - Subtítulo en el mapa */
-.map-subtitle {
-    font-size: 14px;                    /* Tamaño pequeño */
-    color: var(--color-text-muted);     /* Texto gris */
-    margin-bottom: 15px;                /* Espacio debajo */
+@media (max-width: 480px) {
+    .multimedia-grid {
+        grid-template-columns: 1fr;
+    }
+    .promo-video { height: 300px; }
 }
 
-/* MAP ADDRESS - Dirección en el mapa */
-.map-address {
-    font-size: 13px;                    /* Tamaño muy pequeño */
-    color: var(--color-text);           /* Texto oscuro */
-    font-style: italic;                 /* Italic */
-}
 
-/* ==========================================
-   SECCIÓN UBICACIÓN
-   Mapa y información de contacto
-   ========================================== */
-
-/* UBICACION - Sección de ubicación */
+/* ============================================================
+   14. SECCIÓN UBICACIÓN (mapa + tarjetas de info)
+   ============================================================ */
 .ubicacion {
-    background-color: var(--color-light);  /* Fondo blanco */
+    background-color: var(--color-light);
 }
 
-/* MAPA CONTAINER - Contenedor del mapa */
 .mapa-container {
-    margin: 40px 0;                     /* Espacio vertical */
-    border-radius: var(--border-radius);   /* Esquinas redondeadas */
-    overflow: hidden;                   /* Corta contenido que sobresale */
-    box-shadow: var(--box-shadow);      /* Sombra */
+    margin: var(--gap-lg) 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
 }
 
-/* MAP CLICKABLE - Área clickeable del mapa (MEJORA DE USABILIDAD) */
+/* Área clickeable que simula un mapa */
 .map-clickable {
-    width: 100%;                        /* Ancho completo */
-    height: 400px;                      /* Alto fijo */
-    background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);  /* Gradiente */
-    border-radius: var(--border-radius);     /* Esquinas redondeadas */
-    display: flex;                      /* Flexbox */
-    align-items: center;                /* Centrado vertical */
-    justify-content: center;            /* Centrado horizontal */
-    cursor: pointer;                    /* Cursor puntero indica que es clickeable */
-    transition: var(--transition);      /* Transición suave */
-    border: 2px solid var(--color-primary);  /* Borde rojo */
+    width: 100%;
+    height: 380px;
+    background: linear-gradient(145deg, #e8e8e8 0%, #f0f0f0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* cursor: pointer → le dice al usuario que es clicable */
+    transition: var(--transition);
+    border: 3px solid var(--color-primary);
+    border-radius: var(--radius-lg);
 }
 
-/* MAP CLICKABLE HOVER - Efecto al pasar mouse */
+/* Al hacer hover el mapa crece ligeramente */
 .map-clickable:hover {
-    background: linear-gradient(135deg, #d0d0d0 0%, #e8e8e8 100%);  /* Gradiente más oscuro */
-    transform: scale(1.02);             /* Crece un 2% */
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);  /* Sombra mayor */
+    background: linear-gradient(145deg, #d8d8d8 0%, #e4e4e4 100%);
+    transform: scale(1.01);
+    box-shadow: var(--shadow-md);
 }
 
-/* MAP INFO - Información del mapa */
-.map-info {
-    text-align: center;                 /* Texto centrado */
-    padding: 20px;                      /* Espaciado interno */
+.map-info { text-align: center; padding: var(--gap-md); }
+
+.map-title {
+    font-size: 26px;
+    color: var(--color-dark);
+    font-weight: 800;
+    margin-bottom: 10px;
 }
 
-/* MAP INFO P - Párrafos en el mapa */
-.map-info p {
-    margin: 10px 0;                     /* Espacio vertical */
-    color: var(--color-dark);           /* Texto oscuro */
-    font-weight: bold;                  /* Texto grueso */
+.map-subtitle {
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    margin-bottom: 12px;
 }
 
-/* MAP SECONDARY - Texto secundario en mapa */
-.map-secondary {
-    font-size: 14px;                    /* Tamaño pequeño */
-    color: var(--color-text-muted);     /* Texto gris */
-    font-weight: normal;                /* Peso normal */
-    font-style: italic;                 /* Italic */
+.map-address {
+    font-size: var(--fs-sm);
+    color: var(--color-text);
+    font-style: italic;
+    font-weight: 600;
 }
 
-/* INFO GRID - Grid de información (RESPONSIVO) */
+/* Grid de 3 tarjetas de información (ubicación, contacto, horario) */
 .info-grid {
-    display: grid;                                          /* CSS Grid */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  /* Responsivo automático */
-    gap: 20px;                                              /* Espacio entre elementos */
-    margin-top: 40px;                                       /* Espacio arriba */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--gap-md);
+    margin-top: var(--gap-lg);
 }
 
-/* INFO CARD - Tarjeta de información */
 .info-card {
-    background-color: var(--color-light);       /* Fondo blanco */
-    padding: 25px;                              /* Espaciado interno */
-    border-radius: var(--border-radius);        /* Esquinas redondeadas */
-    border: 2px solid var(--color-primary);     /* Borde rojo */
-    box-shadow: var(--box-shadow);              /* Sombra */
+    background-color: var(--color-light);
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-primary);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
 }
 
-/* INFO CARD H3 - Título de la tarjeta */
+.info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
 .info-card h3 {
-    font-size: 16px;                    /* Tamaño mediano */
-    margin-bottom: 12px;                /* Espacio debajo */
-    color: var(--color-dark);           /* Texto oscuro */
+    font-size: var(--fs-base);
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 10px;
 }
 
-/* INFO CARD P - Párrafos en la tarjeta */
 .info-card p {
-    font-size: 14px;                    /* Tamaño pequeño */
-    color: var(--color-text-muted);     /* Texto gris */
-    line-height: 1.8;                   /* Altura de línea cómoda */
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    line-height: 1.8;
 }
 
-/* ==========================================
-   SECCIÓN FORMULARIO
-   Formulario de contacto
-   ========================================== */
+/* Responsive ubicación */
+@media (max-width: 768px) {
+    .map-clickable { height: 280px; }
+    .map-title { font-size: 20px; }
+}
 
-/* FORMULARIO - Sección de formulario */
+@media (max-width: 480px) {
+    .map-clickable { height: 220px; }
+    .info-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ============================================================
+   15. SECCIÓN FORMULARIO DE CONTACTO
+   ============================================================ */
 .formulario {
-    background-color: var(--color-bg);  /* Fondo gris claro */
+    background-color: var(--color-bg);
 }
 
-/* CONTACT FORM - Formulario de contacto */
 .contact-form {
-    background-color: var(--color-light);      /* Fondo blanco */
-    padding: 40px;                             /* Espaciado interno */
-    border-radius: var(--border-radius);       /* Esquinas redondeadas */
-    max-width: 600px;                          /* Ancho máximo */
-    margin: 0 auto;                            /* Centrado */
-    box-shadow: var(--box-shadow);             /* Sombra */
+    background-color: var(--color-light);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    max-width: 620px;
+    margin: 0 auto;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-border);
 }
 
-/* FORM GROUP - Grupo de campo del formulario */
 .form-group {
-    margin-bottom: 20px;                /* Espacio debajo de cada grupo */
+    margin-bottom: 20px;
 }
 
-/* FORM GROUP LABEL - Etiqueta del campo */
 .form-group label {
-    display: block;                     /* Ocupa línea completa */
-    margin-bottom: 8px;                 /* Espacio debajo */
-    font-weight: bold;                  /* Texto grueso */
-    color: var(--color-dark);           /* Texto oscuro */
-    font-size: 14px;                    /* Tamaño pequeño */
+    display: block;
+    margin-bottom: 8px;
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    color: var(--color-dark);
 }
 
-/* FORM GROUP INPUT y TEXTAREA - Campos de entrada */
+/* Inputs y textarea comparten los mismos estilos base */
 .form-group input,
 .form-group textarea {
-    width: 100%;                        /* Ancho completo */
-    padding: 12px 15px;                 /* Espaciado interno */
-    border: 1px solid var(--color-border);  /* Borde gris */
-    border-radius: var(--border-radius);    /* Esquinas redondeadas */
-    font-family: var(--font-main);      /* Misma fuente */
-    font-size: 14px;                    /* Tamaño pequeño */
-    transition: var(--transition);      /* Transición suave */
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius);
+    font-family: var(--font-main);
+    font-size: var(--fs-sm);
+    color: var(--color-text);
+    background-color: var(--color-light);
+    transition: var(--transition);
 }
 
-/* FORM GROUP FOCUS - Cuando el campo está enfocado */
+/* Al enfocar un campo: borde rojo + sombra suave roja */
 .form-group input:focus,
 .form-group textarea:focus {
-    outline: none;                      /* Sin contorno por defecto */
-    border-color: var(--color-primary); /* Borde rojo */
-    box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);  /* Sombra roja suave */
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(211,47,47,0.12);
 }
 
-/* CONTACT FORM BUTTON - Botón del formulario */
+.form-group textarea {
+    resize: vertical; /* Solo permite redimensionar verticalmente */
+    min-height: 130px;
+}
+
+/* Botón de envío centrado */
 .contact-form button {
-    display: block;                     /* Ocupa línea completa */
-    margin-left: auto;                  /* Centrado */
-    margin-right: auto;                 /* Centrado */
+    display: block;
+    margin: 0 auto;
+    min-width: 200px;
 }
 
-/* ==========================================
-   FOOTER
-   Pie de página
-   ========================================== */
+/* Responsive formulario */
+@media (max-width: 768px) {
+    .contact-form { padding: 28px var(--gap-md); }
+}
 
-/* FOOTER - Pie de página */
+@media (max-width: 480px) {
+    .contact-form { padding: 22px 15px; }
+    .contact-form button { width: 100%; }
+}
+
+
+/* ============================================================
+   16. FOOTER
+   Grid de 3 columnas que se colapsa en móvil a 1 columna
+   ============================================================ */
 .footer {
-    background-color: var(--color-dark);    /* Fondo oscuro */
-    color: var(--color-light);              /* Texto blanco */
-    padding: 40px 20px 20px;                /* Espaciado */
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    padding: 48px var(--gap-md) 24px;
 }
 
-/* FOOTER CONTENT - Contenido del footer */
 .footer-content {
-    display: grid;                                          /* CSS Grid */
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));  /* Responsivo */
-    gap: 30px;                                              /* Espacio entre columnas */
-    margin-bottom: 30px;                                    /* Espacio debajo */
-    border-bottom: 1px solid #444;                          /* Línea divisoria */
-    padding-bottom: 30px;                                   /* Espacio debajo */
-}
-
-/* FOOTER SECTION - Sección del footer */
-.footer-section h3,
-.footer-section h4 {
-    font-size: 16px;                    /* Tamaño pequeño */
-    margin-bottom: 12px;                /* Espacio debajo */
-    color: var(--color-light);          /* Texto blanco */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--gap-lg);
+    padding-bottom: var(--gap-lg);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: var(--gap-md);
 }
 
 .footer-section h3 {
-    font-size: 18px;                    /* Tamaño un poco mayor */
-    font-weight: bold;                  /* Texto grueso */
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--color-light);
+    margin-bottom: 6px;
 }
 
-/* FOOTER TAGLINE - Eslogan del footer */
+.footer-section h4 {
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    color: var(--color-light);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 .footer-tagline {
-    color: var(--color-primary);        /* Color rojo */
-    font-size: 12px;                    /* Tamaño muy pequeño */
-    font-weight: bold;                  /* Texto grueso */
-    text-transform: uppercase;          /* Mayúsculas */
-    margin-top: 8px;                    /* Espacio arriba */
+    color: var(--color-primary);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
-/* FOOTER SECTION P - Párrafos en el footer */
 .footer-section p {
-    font-size: 13px;                    /* Tamaño muy pequeño */
-    color: #cccccc;                     /* Gris claro */
-    line-height: 1.8;                   /* Altura de línea cómoda */
-    margin-bottom: 5px;                 /* Espacio debajo */
+    font-size: var(--fs-xs);
+    color: rgba(255,255,255,0.6);
+    line-height: 1.9;
+    margin-bottom: 4px;
 }
 
-/* FOOTER BOTTOM - Línea inferior con copyright */
+/* Línea de copyright */
 .footer-bottom {
-    text-align: center;                 /* Centrado */
-    padding-top: 20px;                  /* Espacio arriba */
-    border-top: 1px solid #444;         /* Línea divisoria */
-    color: #888888;                     /* Gris medio */
-    font-size: 12px;                    /* Tamaño muy pequeño */
+    text-align: center;
+    color: rgba(255,255,255,0.35);
+    font-size: var(--fs-xs);
+    padding-top: var(--gap-md);
 }
 
-/* ==========================================
-   RESPONSIVE DESIGN - DISEÑO RESPONSIVO
-   Estilos para diferentes tamaños de pantalla
-   ========================================== */
-
-/* BREAKPOINT 768PX - Tablets y pantallas medianas */
-@media (max-width: 768px) {
-    /* Explicación de RESPONSIVIDAD en CSS:
-       - Estos estilos se aplican cuando la pantalla es menor de 768px
-       - Se usa para ajustar el diseño en tablets y pantallas pequeñas
-       - Las grid se convierten a columnas simples
-       - Los botones se apilan
-       - El texto se reduce
-    */
-
-    /* HERO - En móvil, la grid pasa a ser 1 columna */
-    .hero {
-        grid-template-columns: 1fr;  /* Una sola columna */
-        padding: 40px 20px;          /* Espaciado reducido */
-        min-height: auto;            /* Alto automático */
-    }
-
-    .hero-title {
-        font-size: 32px;             /* Título más pequeño */
-    }
-
-    .hero-subtitle {
-        font-size: 16px;             /* Subtítulo más pequeño */
-    }
-
-    .hero-image {
-        min-height: 250px;           /* Alto mínimo reducido */
-        order: -1;                   /* Imagen arriba, contenido abajo */
-    }
-
-    /* NAVBAR - Menú vertical en móvil */
-    .nav-menu {
-        gap: 15px;                   /* Menos espacio */
-        font-size: 12px;             /* Texto más pequeño */
-    }
-
-    .navbar-content {
-        flex-direction: column;       /* Logo y menú apilados */
-        gap: 15px;                   /* Espacio entre ellos */
-    }
-
-    /* SECTION TITLE - Título más pequeño en móvil */
-    .section-title {
-        font-size: 24px;             /* Tamaño reducido */
-    }
-
-    /* FORM - Padding reducido */
-    .contact-form {
-        padding: 25px;               /* Menos espaciado */
-    }
-
-    /* BENEFICIOS GRID - 2 columnas en lugar de 4 */
-    .beneficios-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));  /* Columnas más pequeñas */
-        gap: 15px;                   /* Menos espacio */
-    }
-
-    .benefit-card {
-        padding: 20px;               /* Padding reducido */
-    }
-
-    /* TABLA - Texto más pequeño */
-    .products-table {
-        font-size: 12px;             /* Texto reducido */
-    }
-
-    .products-table th,
-    .products-table td {
-        padding: 10px;               /* Padding reducido */
-    }
-
-    /* MULTIMEDIA GRID - 1 columna */
-    .multimedia-grid {
-        grid-template-columns: 1fr;  /* Una sola columna */
-    }
-
-    /* INFO GRID - 1 columna */
-    .info-grid {
-        grid-template-columns: 1fr;  /* Una sola columna */
-    }
-
-    /* SECTION - Padding reducido */
-    section {
-        padding: 40px 20px;          /* Menos espaciado vertical */
-    }
-}
-
-/* BREAKPOINT 480PX - Teléfonos pequeños */
+/* Responsive footer */
 @media (max-width: 480px) {
-    /* Explicación de RESPONSIVIDAD extrema:
-       - Para pantallas muy pequeñas (teléfonos)
-       - Se reduce todo al máximo
-       - Se usan variables CSS para cambiar tamaños de fuente
-    */
-
-    /* VARIABLES CSS EN MÓVIL - Cambia los tamaños de base */
-    :root {
-        --font-size-base: 14px;      /* Fuente más pequeña */
-        --font-size-title: 22px;     /* Título más pequeño */
-        --font-size-hero: 28px;      /* Hero mucho más pequeño */
-    }
-
-    /* LOGO - Más pequeño */
-    .logo h1 {
-        font-size: 20px;             /* Logo reduce */
-    }
-
-    .hero-title {
-        font-size: 24px;             /* Título hero más pequeño */
-    }
-
-    /* NAV MENU - Vertical */
-    .nav-menu {
-        flex-direction: column;       /* Menú apilado verticalmente */
-        gap: 10px;                   /* Menos espacio */
-    }
-
-    /* BOTONES - Más pequeños */
-    .btn {
-        padding: 10px 20px;          /* Padding reducido */
-        font-size: 12px;             /* Texto más pequeño */
-    }
-
-    /* SECTION - Padding mínimo */
-    section {
-        padding: 30px 15px;          /* Padding mínimo */
-    }
-
-    .container {
-        padding: 0 15px;             /* Padding mínimo */
-    }
+    .footer { padding: 36px 15px 20px; }
+    .footer-content { grid-template-columns: 1fr; gap: var(--gap-md); }
 }
 
-/* ==========================================
-   ANIMACIONES
-   Efectos visuales suaves
-   ========================================== */
 
-/* KEYFRAMES SLIDEINUP - Animación de entrada */
+/* ============================================================
+   17. ANIMACIONES DE ENTRADA
+   slideInUp → los elementos suben desde abajo y aparecen.
+   Se aplica a títulos de sección y tarjetas de beneficios.
+   forwards → mantiene el estado final de la animación.
+   ============================================================ */
 @keyframes slideInUp {
     from {
-        opacity: 0;                  /* Invisible */
-        transform: translateY(30px); /* 30px abajo */
+        opacity: 0;
+        transform: translateY(24px); /* Empieza 24px más abajo */
     }
     to {
-        opacity: 1;                  /* Visible */
-        transform: translateY(0);    /* En posición */
+        opacity: 1;
+        transform: translateY(0);   /* Llega a su posición natural */
     }
 }
 
-/* SECTION TITLE ANIMATION - Títulos se animan al entrar */
 .section-title {
-    animation: slideInUp 0.6s ease-out;  /* Sube suavemente */
+    animation: slideInUp 0.5s ease-out both;
 }
 
-/* BENEFIT CARD ANIMATION - Tarjetas se animan al entrar */
 .benefit-card {
-    animation: slideInUp 0.6s ease-out;  /* Sube suavemente */
+    animation: slideInUp 0.5s ease-out both;
 }
 
-/* FADE IN - Efecto de desvanecimiento */
+/* Clase utilitaria para animar cualquier elemento manualmente */
 .fade-in {
-    opacity: 0;                          /* Invisible */
-    animation: slideInUp 0.8s ease-out forwards;  /* Se muestra */
-}
-/* VIDEO AJUSTADO */
-.promo-video{
-    width: 100%;
-    max-width: 320px;
-
-    height: 500px;
-
-    object-fit: cover;
-
-    border-radius: 18px;
-
-    display: block;
-
-    margin: 0 auto;
-
-    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+    animation: slideInUp 0.7s ease-out forwards;
 }
 
-/* Responsive */
-@media (max-width:768px){
 
-    .promo-video{
-        max-width: 100%;
-        height: 450px;
-    }
+/* ============================================================
+   18. UTILIDADES
+   Clases de apoyo para casos específicos
+   ============================================================ */
 
+/* Ocultar visualmente pero mantener accesible para lectores de pantalla */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
 }
+
+/* Centrar contenido de texto */
+.text-center { text-align: center; }
